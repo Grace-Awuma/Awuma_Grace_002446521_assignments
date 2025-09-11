@@ -9,8 +9,58 @@ package Model;
  * @author grace
  */
 class Address {
-    String streetName;
-    String unitName;
+    String personName;
+    String country;
+    String state;
     String city;
-    String zipCode;
+    Address street;
+    Address zipCode;
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Address getStreet() {
+        return street;
+    }
+
+    public void setStreet(Address street) {
+        this.street = street;
+    }
+
+    public Address getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(Address zipCode) {
+        this.zipCode = zipCode;
+    }  
 }

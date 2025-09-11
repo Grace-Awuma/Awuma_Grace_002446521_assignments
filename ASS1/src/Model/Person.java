@@ -8,12 +8,14 @@ package Model;
  *
  * @author grace
  */
-public class Product {
+public class Person {
     String name;
-    String description;
-    String availNum;
-    String price;
-    Address manufactureAddress;
-    Address shippingAddress;
-    
+    String age;
+    String country;
+    String phoneNumber;
+    String email;
+    Address homeAddress;
+    Address localAddress;
+
+   
 }
