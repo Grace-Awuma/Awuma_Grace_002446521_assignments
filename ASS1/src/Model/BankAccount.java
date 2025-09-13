@@ -12,8 +12,8 @@ public class BankAccount {
     String personName;
     String accountNumber;
     String accountType;
-    String debitAmount;
     String bankName;
+    String branch;
 
     public String getPersonName() {
         return personName;
@@ -39,14 +39,6 @@ public class BankAccount {
         this.accountType = accountType;
     }
 
-    public String getDebitAmount() {
-        return debitAmount;
-    }
-
-    public void setDebitAmount(String debitAmount) {
-        this.debitAmount = debitAmount;
-    }
-
     public String getBankName() {
         return bankName;
     }
@@ -54,6 +46,12 @@ public class BankAccount {
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
-    
-   
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }   
 }

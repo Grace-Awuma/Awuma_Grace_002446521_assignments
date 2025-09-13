@@ -28,25 +28,51 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         controlPanel = new javax.swing.JPanel();
-        btnCreate = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnCreateProfile = new javax.swing.JButton();
+        btnCreateHomeAddress = new javax.swing.JButton();
+        headingPersonProfile = new javax.swing.JTextField();
+        btnViewProfile = new javax.swing.JButton();
+        btnViewHomeAddress = new javax.swing.JButton();
+        btnCreateLocalAddress = new javax.swing.JButton();
+        btnViewLocalAddress = new javax.swing.JButton();
+        btnCreateBankAcc = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         controlPanel.setBackground(new java.awt.Color(0, 153, 153));
 
-        btnCreate.setText("Create");
+        btnCreateProfile.setText("Create Profile");
 
-        btnView.setText("View");
-
-        jTextField1.setText("Person Profile");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateHomeAddress.setText("Create Home Address");
+        btnCreateHomeAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnCreateHomeAddressActionPerformed(evt);
             }
         });
+
+        headingPersonProfile.setText("Person Profile");
+        headingPersonProfile.setSelectedTextColor(new java.awt.Color(51, 0, 51));
+        headingPersonProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                headingPersonProfileActionPerformed(evt);
+            }
+        });
+
+        btnViewProfile.setText("View Profile");
+
+        btnViewHomeAddress.setText("View Home Address");
+
+        btnCreateLocalAddress.setText("Create Local Address");
+        btnCreateLocalAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateLocalAddressActionPerformed(evt);
+            }
+        });
+
+        btnViewLocalAddress.setText("View Local Address");
+
+        btnCreateBankAcc.setText("Create a Bank Account");
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -55,21 +81,36 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCreate)
-                    .addComponent(btnView)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnViewProfile)
+                    .addComponent(btnCreateHomeAddress)
+                    .addComponent(btnViewHomeAddress)
+                    .addComponent(btnCreateProfile)
+                    .addComponent(headingPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreateLocalAddress)
+                    .addComponent(btnViewLocalAddress)
+                    .addComponent(btnCreateBankAcc))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(headingPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(btnCreate)
-                .addGap(42, 42, 42)
-                .addComponent(btnView)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addComponent(btnCreateProfile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewProfile)
+                .addGap(24, 24, 24)
+                .addComponent(btnCreateHomeAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnViewHomeAddress)
+                .addGap(18, 18, 18)
+                .addComponent(btnCreateLocalAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewLocalAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnCreateBankAcc)
+                .addGap(41, 41, 41))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -94,9 +135,17 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void headingPersonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headingPersonProfileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_headingPersonProfileActionPerformed
+
+    private void btnCreateHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHomeAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateHomeAddressActionPerformed
+
+    private void btnCreateLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLocalAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateLocalAddressActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,10 +183,15 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnView;
+    private javax.swing.JButton btnCreateBankAcc;
+    private javax.swing.JButton btnCreateHomeAddress;
+    private javax.swing.JButton btnCreateLocalAddress;
+    private javax.swing.JButton btnCreateProfile;
+    private javax.swing.JButton btnViewHomeAddress;
+    private javax.swing.JButton btnViewLocalAddress;
+    private javax.swing.JButton btnViewProfile;
     private javax.swing.JPanel controlPanel;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField headingPersonProfile;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
