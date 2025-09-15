@@ -47,17 +47,25 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnViewProfile" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCreateHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="btnViewBankAccount" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="btnViewHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCreateProfile" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="headingPersonProfile" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="btnCreateLocalAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnViewLocalAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCreateBankAcc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="headingPersonProfile" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="btnCreateHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnViewProfile" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnCreateProfile" alignment="0" pref="114" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="33" max="32767" attributes="0"/>
                   </Group>
@@ -66,9 +74,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="headingPersonProfile" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCreateProfile" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnViewProfile" min="-2" max="-2" attributes="0"/>
@@ -80,9 +88,11 @@
                       <Component id="btnCreateLocalAddress" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnViewLocalAddress" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="107" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="btnCreateBankAcc" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnViewBankAccount" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -106,6 +116,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="headingPersonProfile">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Britannic Bold" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Person Profile"/>
                 <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="0" red="33" type="rgb"/>
@@ -153,6 +166,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateBankAccActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnViewBankAccount">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Bank Account"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewBankAccountActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

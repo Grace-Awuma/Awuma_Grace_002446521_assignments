@@ -175,12 +175,14 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
     String accountNumber = fieldBankNum.getText().trim();
     String accountType = fieldBankType.getText().trim();
     
-    // Save data using person object
-    person.getBankAccount().setBankName(bankName);
-    
-     if (person.getBankAccount() == null) {
+        person.setName(name);
+        
+      if (person.getBankAccount() == null) {
         person.setBankAccount(new BankAccount());
     }
+
+    // Save data using person object
+    person.getBankAccount().setBankName(bankName);
     person.getBankAccount().setBranch(bankBranch);
     person.getBankAccount().setAccountNumber(accountNumber);
     person.getBankAccount().setAccountType(accountType);

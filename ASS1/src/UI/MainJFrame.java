@@ -40,6 +40,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnCreateLocalAddress = new javax.swing.JButton();
         btnViewLocalAddress = new javax.swing.JButton();
         btnCreateBankAcc = new javax.swing.JButton();
+        btnViewBankAccount = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,6 +61,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        headingPersonProfile.setFont(new java.awt.Font("Britannic Bold", 1, 14)); // NOI18N
         headingPersonProfile.setText("Person Profile");
         headingPersonProfile.setSelectedTextColor(new java.awt.Color(51, 0, 51));
         headingPersonProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +105,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewBankAccount.setText("View Bank Account");
+        btnViewBankAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBankAccountActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -110,22 +119,27 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewProfile)
-                    .addComponent(btnCreateHomeAddress)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnViewBankAccount))
                     .addComponent(btnViewHomeAddress)
-                    .addComponent(btnCreateProfile)
-                    .addComponent(headingPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCreateLocalAddress)
                     .addComponent(btnViewLocalAddress)
-                    .addComponent(btnCreateBankAcc))
+                    .addComponent(btnCreateBankAcc)
+                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(headingPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreateHomeAddress, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnViewProfile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreateProfile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(headingPersonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(btnCreateProfile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnViewProfile)
@@ -137,9 +151,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnCreateLocalAddress)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnViewLocalAddress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addComponent(btnCreateBankAcc)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnViewBankAccount)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -220,6 +236,12 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane .setRightComponent(createBankAccount);
     }//GEN-LAST:event_btnCreateBankAccActionPerformed
 
+    private void btnViewBankAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBankAccountActionPerformed
+        // TODO add your handling code here:
+        ViewBankAccount viewBankAccount = new ViewBankAccount(person);
+                splitPane.setRightComponent(viewBankAccount);
+    }//GEN-LAST:event_btnViewBankAccountActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,6 +282,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCreateHomeAddress;
     private javax.swing.JButton btnCreateLocalAddress;
     private javax.swing.JButton btnCreateProfile;
+    private javax.swing.JButton btnViewBankAccount;
     private javax.swing.JButton btnViewHomeAddress;
     private javax.swing.JButton btnViewLocalAddress;
     private javax.swing.JButton btnViewProfile;
