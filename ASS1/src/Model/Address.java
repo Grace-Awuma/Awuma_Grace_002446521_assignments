@@ -8,7 +8,7 @@ package Model;
  *
  * @author grace
  */
-class Address {
+public class Address {
     String personName;
     String country;
     String state;

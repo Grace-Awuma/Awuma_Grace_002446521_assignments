@@ -92,6 +92,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Profile"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateProfileActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCreateHomeAddress">
               <Properties>
@@ -116,11 +119,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Profile"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewProfileActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewHomeAddress">
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Home Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewHomeAddressActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCreateLocalAddress">
               <Properties>
@@ -134,11 +143,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Local Address"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewLocalAddressActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCreateBankAcc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create a Bank Account"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateBankAccActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

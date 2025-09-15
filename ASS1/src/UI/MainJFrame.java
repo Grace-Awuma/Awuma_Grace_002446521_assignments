@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Person;
+
 /**
  *
  * @author grace
@@ -13,8 +15,10 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    Person person;
     public MainJFrame() {
         initComponents();
+        person = new Person();
     }
 
     /**
@@ -43,6 +47,11 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel.setBackground(new java.awt.Color(0, 153, 153));
 
         btnCreateProfile.setText("Create Profile");
+        btnCreateProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateProfileActionPerformed(evt);
+            }
+        });
 
         btnCreateHomeAddress.setText("Create Home Address");
         btnCreateHomeAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -60,8 +69,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnViewProfile.setText("View Profile");
+        btnViewProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewProfileActionPerformed(evt);
+            }
+        });
 
         btnViewHomeAddress.setText("View Home Address");
+        btnViewHomeAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewHomeAddressActionPerformed(evt);
+            }
+        });
 
         btnCreateLocalAddress.setText("Create Local Address");
         btnCreateLocalAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -71,8 +90,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnViewLocalAddress.setText("View Local Address");
+        btnViewLocalAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewLocalAddressActionPerformed(evt);
+            }
+        });
 
         btnCreateBankAcc.setText("Create a Bank Account");
+        btnCreateBankAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateBankAccActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -137,15 +166,49 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void headingPersonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headingPersonProfileActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_headingPersonProfileActionPerformed
 
     private void btnCreateHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHomeAddressActionPerformed
         // TODO add your handling code here:
+         //Step1:Instantiate the Create Panel
+        CreateHomeAddress createHomeAddress = new CreateHomeAddress(person);
+        //Step2:Switch
+        splitPane .setRightComponent(createHomeAddress);
     }//GEN-LAST:event_btnCreateHomeAddressActionPerformed
 
+    
+    
     private void btnCreateLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLocalAddressActionPerformed
         // TODO add your handling code here:
+         //Step1:Instantiate the Create Panel
+        CreateJPanel createJPanel = new CreateJPanel(product);
+        //Step2:Switch
+        splitPane .setRightComponent(createJPanel);
     }//GEN-LAST:event_btnCreateLocalAddressActionPerformed
+
+    private void btnCreateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateProfileActionPerformed
+          // //Step1:Instantiate the Create Panel
+        CreateProfilePanel createProfilePanel = new CreateProfilePanel(person);
+        //Step2:Switch
+        splitPane .setRightComponent(createProfilePanel); 
+    }//GEN-LAST:event_btnCreateProfileActionPerformed
+
+    private void btnViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewProfileActionPerformed
+
+    private void btnViewHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHomeAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewHomeAddressActionPerformed
+
+    private void btnViewLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLocalAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewLocalAddressActionPerformed
+
+    private void btnCreateBankAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBankAccActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateBankAccActionPerformed
 
     /**
      * @param args the command line arguments
