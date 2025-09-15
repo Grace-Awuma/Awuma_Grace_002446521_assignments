@@ -5,7 +5,6 @@
 package UI;
 
 import Model.Person;
-import UI.*;
 
 /**
  *
@@ -173,7 +172,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHomeAddressActionPerformed
         // TODO add your handling code here:
          //Step1:Instantiate the Create Panel
-        CreateHomeAddress createHomeAddress = new CreateHomeAddress(person); // Pass person parameter
+        CreateHomeAddressPanel createHomeAddress = new CreateHomeAddressPanel(person); // Pass person parameter
     // Step2: Switch
     splitPane.setRightComponent(createHomeAddress);
     }//GEN-LAST:event_btnCreateHomeAddressActionPerformed
@@ -183,7 +182,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLocalAddressActionPerformed
         // TODO add your handling code here:
          //Step1:Instantiate the Create Panel
-        CreateLocalAddress createLocalAddress = new CreateLocalAddress(person);
+        CreateLocalAddressPanel createLocalAddress = new CreateLocalAddressPanel(person);
         //Step2:Switch
         splitPane .setRightComponent(createLocalAddress);
     }//GEN-LAST:event_btnCreateLocalAddressActionPerformed
@@ -203,7 +202,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnViewHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHomeAddressActionPerformed
         // TODO add your handling code here:
-        ViewHomeAddress viewHomeAddress = new ViewHomeAddress(person);
+        ViewHomeAddressJPanel viewHomeAddress = new ViewHomeAddressJPanel(person);
                 splitPane.setRightComponent(viewHomeAddress);
     }//GEN-LAST:event_btnViewHomeAddressActionPerformed
 
@@ -216,7 +215,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateBankAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBankAccActionPerformed
         // TODO add your handling code here:
          //Step1:Instantiate the Create Panel
-        CreateBankAccount createBankAccount = new CreateBankAccount(person);
+        CreateBankAccountPanel createBankAccount = new CreateBankAccountPanel(person);
         //Step2:Switch
         splitPane .setRightComponent(createBankAccount);
     }//GEN-LAST:event_btnCreateBankAccActionPerformed
