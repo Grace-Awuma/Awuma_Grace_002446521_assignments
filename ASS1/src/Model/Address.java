@@ -13,8 +13,8 @@ public class Address {
     String country;
     String state;
     String city;
-    Address street;
-    Address zipCode;
+    String street;
+    String zipCode;
 
     public String getPersonName() {
         return personName;
@@ -48,19 +48,21 @@ public class Address {
         this.city = city;
     }
 
-    public Address getStreet() {
+    public String getStreet() {
         return street;
     }
 
-    public void setStreet(Address street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
-    public Address getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Address zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }  
+    }
+    
+    
 }

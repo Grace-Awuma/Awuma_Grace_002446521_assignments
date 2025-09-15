@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Person;
+
 /**
  *
  * @author grace
@@ -13,10 +15,21 @@ public class ViewLocalAddress extends javax.swing.JPanel {
     /**
      * Creates new form ViewLocalAddress
      */
-    public ViewLocalAddress() {
+    Person person;
+    public ViewLocalAddress(Person p) {
         initComponents();
+        person= p;
+        view();
     }
-
+    
+    private void view() {
+        // Access local address through person object
+        fieldLocalAddressName.setText(person.getLocalAddress().getPersonName());
+        fieldLocalAdresStrt.setText(person.getLocalAddress().getStreet());
+        fieldLocalAddressCity.setText(person.getLocalAddress().getCity());
+        fieldLocalAddressState.setText(person.getLocalAddress().getState());
+        fieldLocalAddressCountry.setText(person.getLocalAddress().getCountry());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +39,120 @@ public class ViewLocalAddress extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblStrt = new javax.swing.JLabel();
+        fieldLocalAddressName = new javax.swing.JTextField();
+        fieldLocalAddressCountry = new javax.swing.JTextField();
+        fieldLocalAddressState = new javax.swing.JTextField();
+        fieldLocalAddressCity = new javax.swing.JTextField();
+        fieldLocalAdresStrt = new javax.swing.JTextField();
+        lblLocalAddress = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblCountry = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel4.setText("State");
+
+        lblCity.setText("City");
+
+        lblStrt.setText("Street");
+
+        fieldLocalAddressState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldLocalAddressStateActionPerformed(evt);
+            }
+        });
+
+        fieldLocalAddressCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldLocalAddressCityActionPerformed(evt);
+            }
+        });
+
+        lblLocalAddress.setText("Enter your Local Address");
+
+        lblName.setText("Name");
+
+        lblCountry.setText("Country");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(99, 99, 99)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblCountry)
+                        .addComponent(lblName)
+                        .addComponent(jLabel4)
+                        .addComponent(lblStrt)
+                        .addComponent(lblCity))
+                    .addGap(61, 61, 61)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblLocalAddress)
+                        .addComponent(fieldLocalAddressName, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(fieldLocalAddressCountry)
+                        .addComponent(fieldLocalAddressState)
+                        .addComponent(fieldLocalAddressCity)
+                        .addComponent(fieldLocalAdresStrt))
+                    .addContainerGap(99, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(92, 92, 92)
+                    .addComponent(lblLocalAddress)
+                    .addGap(36, 36, 36)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblName)
+                                .addComponent(fieldLocalAddressName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblCountry)
+                                .addComponent(fieldLocalAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(fieldLocalAddressState, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))
+                            .addGap(18, 18, 18)
+                            .addComponent(fieldLocalAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCity))
+                    .addGap(23, 23, 23)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblStrt)
+                        .addComponent(fieldLocalAdresStrt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(93, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldLocalAddressStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLocalAddressStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldLocalAddressStateActionPerformed
+
+    private void fieldLocalAddressCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLocalAddressCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldLocalAddressCityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldLocalAddressCity;
+    private javax.swing.JTextField fieldLocalAddressCountry;
+    private javax.swing.JTextField fieldLocalAddressName;
+    private javax.swing.JTextField fieldLocalAddressState;
+    private javax.swing.JTextField fieldLocalAdresStrt;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblCountry;
+    private javax.swing.JLabel lblLocalAddress;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblStrt;
     // End of variables declaration//GEN-END:variables
 }

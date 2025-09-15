@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Person;
+
 /**
  *
  * @author grace
@@ -13,9 +15,21 @@ public class ViewHomeAddressJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewHomeAddressJPanel
      */
-    public ViewHomeAddressJPanel() {
+    Person person;
+    public ViewHomeAddressJPanel(Person p) {
         initComponents();
+        person = p;
+        view();
     }
+    
+    private void view() {
+    // Access home address through person object
+    fieldHomeName.setText(person.getHomeAddress().getPersonName());
+    fieldHomeStreet.setText(person.getHomeAddress().getStreet());
+    fieldHomeCity.setText(person.getHomeAddress().getCity());
+    fieldHomeState.setText(person.getHomeAddress().getState());
+    fieldHomeCountry.setText(person.getHomeAddress().getCountry());
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +40,129 @@ public class ViewHomeAddressJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblHmCity = new javax.swing.JLabel();
+        lblHmStrt = new javax.swing.JLabel();
+        fieldHomeName = new javax.swing.JTextField();
+        fieldHomeCountry = new javax.swing.JTextField();
+        fieldHomeState = new javax.swing.JTextField();
+        fieldHomeCity = new javax.swing.JTextField();
+        fieldHomeStreet = new javax.swing.JTextField();
+        lblHomeAddress = new javax.swing.JLabel();
+        lblHomeName = new javax.swing.JLabel();
+        lblHmCountry = new javax.swing.JLabel();
+        lblHomeState = new javax.swing.JLabel();
+
+        lblHmCity.setText("City");
+
+        lblHmStrt.setText("Street");
+
+        fieldHomeCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldHomeCountryActionPerformed(evt);
+            }
+        });
+
+        fieldHomeStreet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldHomeStreetActionPerformed(evt);
+            }
+        });
+
+        lblHomeAddress.setText("View Your Home Address");
+
+        lblHomeName.setText("Name");
+
+        lblHmCountry.setText("Country");
+
+        lblHomeState.setText("State");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(119, 119, 119)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(58, 58, 58)
+                            .addComponent(lblHomeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHomeName)
+                                .addGap(67, 67, 67)
+                                .addComponent(fieldHomeName)
+                                .addGap(10, 10, 10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblHmStrt)
+                                    .addComponent(lblHmCity))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldHomeCity, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                                    .addComponent(fieldHomeStreet)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHomeState)
+                                .addGap(81, 81, 81)
+                                .addComponent(fieldHomeState))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHmCountry)
+                                .addGap(66, 66, 66)
+                                .addComponent(fieldHomeCountry))))
+                    .addGap(119, 119, 119)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(98, 98, 98)
+                    .addComponent(lblHomeAddress)
+                    .addGap(30, 30, 30)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHomeName)
+                        .addComponent(fieldHomeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(23, 23, 23)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHmCountry)
+                        .addComponent(fieldHomeCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHomeState)
+                        .addComponent(fieldHomeState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHmCity)
+                        .addComponent(fieldHomeCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHmStrt)
+                        .addComponent(fieldHomeStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(99, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldHomeCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldHomeCountryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldHomeCountryActionPerformed
+
+    private void fieldHomeStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldHomeStreetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldHomeStreetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldHomeCity;
+    private javax.swing.JTextField fieldHomeCountry;
+    private javax.swing.JTextField fieldHomeName;
+    private javax.swing.JTextField fieldHomeState;
+    private javax.swing.JTextField fieldHomeStreet;
+    private javax.swing.JLabel lblHmCity;
+    private javax.swing.JLabel lblHmCountry;
+    private javax.swing.JLabel lblHmStrt;
+    private javax.swing.JLabel lblHomeAddress;
+    private javax.swing.JLabel lblHomeName;
+    private javax.swing.JLabel lblHomeState;
     // End of variables declaration//GEN-END:variables
 }

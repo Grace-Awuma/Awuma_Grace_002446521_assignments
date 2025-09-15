@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Person;
+
 /**
  *
  * @author grace
@@ -13,9 +15,21 @@ public class ViewProfilePanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewProfilePanel
      */
-    public ViewProfilePanel() {
+    Person person;
+    public ViewProfilePanel(Person p) {
         initComponents();
+        person = p;
+        view();
     }
+    
+    private void view() {
+    fieldProfileName.setText(person.getName());
+    fieldProfileAge.setText(person.getAge());
+    fieldCountry.setText(person.getCountry());
+    fieldPhoneNum.setText(person.getPhoneNumber());
+    fieldEmail.setText(person.getEmail());
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +40,112 @@ public class ViewProfilePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fieldPhoneNum = new javax.swing.JTextField();
+        fieldEmail = new javax.swing.JTextField();
+        lblViewProfile = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblCountry = new javax.swing.JLabel();
+        lblPhoneNumber = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        fieldProfileName = new javax.swing.JTextField();
+        fieldProfileAge = new javax.swing.JTextField();
+        fieldCountry = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(255, 204, 204));
+
+        lblViewProfile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblViewProfile.setForeground(new java.awt.Color(204, 0, 51));
+        lblViewProfile.setText("View your Profile");
+
+        lblName.setText("Name");
+
+        lblAge.setText("Age");
+
+        lblCountry.setText("Country of Origin");
+
+        lblPhoneNumber.setText("Phone Number");
+
+        lblEmail.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(lblViewProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(38, 38, 38)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblName)
+                                .addComponent(lblAge))
+                            .addGap(66, 66, 66)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldProfileAge, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldProfileName, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblPhoneNumber)
+                                .addComponent(lblEmail)
+                                .addComponent(lblCountry))
+                            .addGap(66, 66, 66)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fieldCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldPhoneNum, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                .addComponent(fieldEmail))))
+                    .addContainerGap(118, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lblViewProfile)
+                .addContainerGap(392, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(75, 75, 75)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblName)
+                                .addComponent(fieldProfileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(27, 27, 27)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblAge)
+                                .addComponent(fieldProfileAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(27, 27, 27)
+                            .addComponent(lblCountry)
+                            .addGap(29, 29, 29)
+                            .addComponent(lblPhoneNumber))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(fieldCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(fieldPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(26, 26, 26)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblEmail)
+                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(156, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldCountry;
+    private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldPhoneNum;
+    private javax.swing.JTextField fieldProfileAge;
+    private javax.swing.JTextField fieldProfileName;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblCountry;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblViewProfile;
     // End of variables declaration//GEN-END:variables
 }

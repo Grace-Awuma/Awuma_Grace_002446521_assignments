@@ -144,7 +144,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        workArea.setBackground(new java.awt.Color(153, 153, 153));
+        workArea.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
@@ -182,9 +182,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateLocalAddressActionPerformed
         // TODO add your handling code here:
          //Step1:Instantiate the Create Panel
-        CreateJPanel createJPanel = new CreateJPanel(product);
+        CreateLocalAddress createLocalAddress = new CreateLocalAddress(person);
         //Step2:Switch
-        splitPane .setRightComponent(createJPanel);
+        splitPane .setRightComponent(createLocalAddress);
     }//GEN-LAST:event_btnCreateLocalAddressActionPerformed
 
     private void btnCreateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateProfileActionPerformed
@@ -196,18 +196,28 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfileActionPerformed
         // TODO add your handling code here:
+        ViewProfilePanel viewProfilePanel = new ViewProfilePanel(person);
+                splitPane.setRightComponent(viewProfilePanel);
     }//GEN-LAST:event_btnViewProfileActionPerformed
 
     private void btnViewHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHomeAddressActionPerformed
         // TODO add your handling code here:
+        ViewHomeAddress viewHomeAddress = new ViewHomeAddress(person);
+                splitPane.setRightComponent(viewHomeAddress);
     }//GEN-LAST:event_btnViewHomeAddressActionPerformed
 
     private void btnViewLocalAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLocalAddressActionPerformed
         // TODO add your handling code here:
+        ViewLocalAddress viewLocalAddress = new ViewLocalAddress(person);
+                splitPane.setRightComponent(viewLocalAddress);
     }//GEN-LAST:event_btnViewLocalAddressActionPerformed
 
     private void btnCreateBankAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBankAccActionPerformed
         // TODO add your handling code here:
+         //Step1:Instantiate the Create Panel
+        CreateBankAccount createBankAccount = new CreateBankAccount(person);
+        //Step2:Switch
+        splitPane .setRightComponent(createBankAccount);
     }//GEN-LAST:event_btnCreateBankAccActionPerformed
 
     /**

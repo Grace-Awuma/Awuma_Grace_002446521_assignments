@@ -194,7 +194,7 @@ private boolean validateFields() {
     person.setName(name);
     person.setAge(age);
     person.setCountry(country);
-    person.setPhone(phone);
+    person.setPhoneNumber(phone);
     person.setEmail(email);
 
     // Show success pop-up
