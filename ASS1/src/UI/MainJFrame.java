@@ -5,6 +5,7 @@
 package UI;
 
 import Model.Person;
+import UI.*;
 
 /**
  *
@@ -172,9 +173,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnCreateHomeAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHomeAddressActionPerformed
         // TODO add your handling code here:
          //Step1:Instantiate the Create Panel
-        CreateHomeAddress createHomeAddress = new CreateHomeAddress(person);
-        //Step2:Switch
-        splitPane .setRightComponent(createHomeAddress);
+        CreateHomeAddress createHomeAddress = new CreateHomeAddress(person); // Pass person parameter
+    // Step2: Switch
+    splitPane.setRightComponent(createHomeAddress);
     }//GEN-LAST:event_btnCreateHomeAddressActionPerformed
 
     
