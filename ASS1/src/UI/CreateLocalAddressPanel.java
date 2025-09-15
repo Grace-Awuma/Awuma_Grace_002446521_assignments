@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Model.Address;
 import Model.Person;
 import javax.swing.JOptionPane;
 
@@ -196,6 +197,9 @@ private boolean validateLocalAddressFields() {
 
     // Save into localAddress object
     person.setName(name);
+    if (person.getLocalAddress() == null) {
+        person.setLocalAddress(new Address());
+    }
     person.getLocalAddress().setStreet(street);
     person.getLocalAddress().setCity(city);
     person.getLocalAddress().setState(state);

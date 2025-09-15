@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Model.BankAccount;
 import Model.Person;
 import javax.swing.JOptionPane;
 
@@ -176,6 +177,10 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
     
     // Save data using person object
     person.getBankAccount().setBankName(bankName);
+    
+     if (person.getBankAccount() == null) {
+        person.setBankAccount(new BankAccount());
+    }
     person.getBankAccount().setBranch(bankBranch);
     person.getBankAccount().setAccountNumber(accountNumber);
     person.getBankAccount().setAccountType(accountType);
