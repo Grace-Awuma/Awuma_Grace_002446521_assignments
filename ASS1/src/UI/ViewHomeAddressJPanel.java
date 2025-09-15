@@ -24,7 +24,7 @@ public class ViewHomeAddressJPanel extends javax.swing.JPanel {
     
     private void view() {
     // Access home address through person object
-    fieldHomeName.setText(person.getHomeAddress().getPersonName());
+     fieldHomeName.setText(person.getName());
     fieldHomeStreet.setText(person.getHomeAddress().getStreet());
     fieldHomeCity.setText(person.getHomeAddress().getCity());
     fieldHomeState.setText(person.getHomeAddress().getState());

@@ -24,7 +24,7 @@ public class ViewLocalAddress extends javax.swing.JPanel {
     
     private void view() {
         // Access local address through person object
-        fieldLocalAddressName.setText(person.getLocalAddress().getPersonName());
+        fieldLocalAddressName.setText(person.getName());
         fieldLocalAdresStrt.setText(person.getLocalAddress().getStreet());
         fieldLocalAddressCity.setText(person.getLocalAddress().getCity());
         fieldLocalAddressState.setText(person.getLocalAddress().getState());
