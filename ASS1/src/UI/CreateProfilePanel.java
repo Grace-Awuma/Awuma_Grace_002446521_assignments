@@ -20,7 +20,7 @@ public class CreateProfilePanel extends javax.swing.JPanel {
     Person person;
     public CreateProfilePanel(Person p) {
         initComponents();
-        Person = p;
+        person = p;
         
     }
     

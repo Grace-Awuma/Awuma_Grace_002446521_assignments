@@ -5,6 +5,7 @@
 package UI;
 
 import Model.Person;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,7 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
     Person person;
     public CreateBankAccountPanel(Person p) {
         initComponents();
-        Person = p;
+        person = p;
     }
 
     /**
@@ -30,41 +31,45 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        lblBankAcc = new javax.swing.JLabel();
+        lblAccName = new javax.swing.JLabel();
+        lblAccNum = new javax.swing.JLabel();
+        lblAccType = new javax.swing.JLabel();
+        lblBankName = new javax.swing.JLabel();
+        lblBranch = new javax.swing.JLabel();
+        fieldName = new javax.swing.JTextField();
+        fieldBankNum = new javax.swing.JTextField();
+        fieldBankType = new javax.swing.JTextField();
+        fieldBankName = new javax.swing.JTextField();
+        fieldBankBranch = new javax.swing.JTextField();
+        btnBankSave = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
-        jLabel1.setText("Create a Bank Account");
+        lblBankAcc.setText("Create a Bank Account");
 
-        jLabel2.setText("jLabel2");
+        lblAccName.setText("Name");
 
-        jLabel3.setText("jLabel3");
+        lblAccNum.setText("Account Number");
 
-        jLabel4.setText("jLabel4");
+        lblAccType.setText("Account Type");
 
-        jLabel5.setText("jLabel5");
+        lblBankName.setText("Bank Name");
 
-        jLabel6.setText("jLabel6");
+        lblBranch.setText("Branch");
 
-        jTextField1.setText("jTextField1");
+        fieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNameActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
+        btnBankSave.setText("Save");
+        btnBankSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBankSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,25 +79,26 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addComponent(jLabel1))
+                        .addComponent(lblBankAcc))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(lblAccNum)
+                            .addComponent(lblAccName)
+                            .addComponent(lblAccType)
+                            .addComponent(lblBankName)
+                            .addComponent(lblBranch))
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField5))
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                                    .addComponent(fieldName)
+                                    .addComponent(fieldBankNum)
+                                    .addComponent(fieldBankBranch, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                                .addComponent(fieldBankType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnBankSave, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(fieldBankName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,42 +106,105 @@ public class CreateBankAccountPanel extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblBankAcc)
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAccName)
+                            .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAccNum)
+                            .addComponent(fieldBankNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel4))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblAccType))
+                    .addComponent(fieldBankType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBankName)
+                    .addComponent(fieldBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                    .addComponent(lblBranch)
+                    .addComponent(fieldBankBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(btnBankSave)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNameActionPerformed
+    
+    private boolean validateBankAccountFields() {
+    if (fieldName.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Name field cannot be empty!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (fieldBankName.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Bank Name field cannot be empty!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (fieldBankBranch.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Bank Branch field cannot be empty!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (fieldBankNum.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Account Number field cannot be empty!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (fieldBankType.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Account Type field cannot be empty!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
+    
+    private void btnBankSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankSaveActionPerformed
+        // TODO add your handling code here:
+        // Validate fields first
+    if (!validateBankAccountFields()) {
+        return;
+    }
+    
+    // Collect values from text fields
+    String name = fieldName.getText().trim();
+    String bankName = fieldBankName.getText().trim();
+    String bankBranch = fieldBankBranch.getText().trim();
+    String accountNumber = fieldBankNum.getText().trim();
+    String accountType = fieldBankType.getText().trim();
+    
+    // Save data using person object
+    person.getBankAccount().setBankName(bankName);
+    person.getBankAccount().setBranch(bankBranch);
+    person.getBankAccount().setAccountNumber(accountNumber);
+    person.getBankAccount().setAccountType(accountType);
+    person.getBankAccount().setPersonName(name); 
+    
+    // Show success message
+    JOptionPane.showMessageDialog(this, "Bank Account information saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    
+    // Clear all fields after saving
+    fieldName.setText("");
+    fieldBankName.setText("");
+    fieldBankBranch.setText("");
+    fieldBankNum.setText("");
+    fieldBankType.setText("");
+    }//GEN-LAST:event_btnBankSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton btnBankSave;
+    private javax.swing.JTextField fieldBankBranch;
+    private javax.swing.JTextField fieldBankName;
+    private javax.swing.JTextField fieldBankNum;
+    private javax.swing.JTextField fieldBankType;
+    private javax.swing.JTextField fieldName;
+    private javax.swing.JLabel lblAccName;
+    private javax.swing.JLabel lblAccNum;
+    private javax.swing.JLabel lblAccType;
+    private javax.swing.JLabel lblBankAcc;
+    private javax.swing.JLabel lblBankName;
+    private javax.swing.JLabel lblBranch;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class Person {
     String email;
     Address homeAddress;
     Address localAddress;
+   BankAccount bankAccount;
 
     public String getName() {
         return name;
@@ -72,6 +73,15 @@ public class Person {
     public void setLocalAddress(Address localAddress) {
         this.localAddress = localAddress;
     }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
 
    
 }
