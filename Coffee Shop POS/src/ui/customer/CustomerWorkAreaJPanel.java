@@ -4,17 +4,24 @@
  */
 package ui.customer;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import model.Business;
+
 /**
  *
  * @author grace
  */
 public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
     /**
      * Creates new form CustomerWorkAreaJPanel
      */
-    public CustomerWorkAreaJPanel() {
+    public CustomerWorkAreaJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+         this.mainWorkArea = mainWorkArea;
+        this.business = business;
     }
 
     /**
@@ -42,10 +49,25 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         lblWelcome.setText("<Welcome Msg>");
 
         btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
 
         btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnHistory.setText("History");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +116,33 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "Home");
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        CustomerOrderJPanel orderPanel = new CustomerOrderJPanel(mainWorkArea, business);
+        mainWorkArea.add("CustomerOrder", orderPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "CustomerOrder");
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        ViewCustomerDetailsJPanel historyPanel = new ViewCustomerDetailsJPanel(mainWorkArea, business);
+        mainWorkArea.add("CustomerHistory", historyPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "CustomerHistory");
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+        // TODO add your handling code here:
+        CustomerOrderHistory historyPanel = new CustomerOrderHistory(mainWorkArea, business);
+        mainWorkArea.add("CustomerHistory", historyPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "CustomerHistory");
+    }//GEN-LAST:event_btnHistoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,17 +4,33 @@
  */
 package ui.customer;
 
+import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Business;
+import model.Order;
+
 /**
  *
  * @author grace
  */
 public class CustomerOrderHistory extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
+    private Order selectedOrder;
     /**
      * Creates new form CustomerOrderHistory
      */
-    public CustomerOrderHistory() {
+    public CustomerOrderHistory(JPanel mainWorkArea, Business business) {
         initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.business = business;
+      
+        
+        refreshTable();
+        addTableSelectionListener();
     }
 
     /**
@@ -26,31 +42,25 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblPurchaseHistory = new javax.swing.JLabel();
+        btnViewOrder = new javax.swing.JButton();
+        lblHistory = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        lblPurchaseHistory.setText("Purchase History");
 
-        jLabel2.setText("jLabel2");
-
-        jButton6.setText("View Order");
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnViewOrder.setText("View Order");
+        btnViewOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnViewOrderActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Update Status");
-
-        jLabel7.setText("History");
+        lblHistory.setText("History Details");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,14 +80,19 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton5.setText("Delete Order");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete Order");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton1.setText("<<Back");
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,28 +100,24 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jButton1)
+                .addComponent(btnBack)
                 .addGap(165, 165, 165)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(83, 83, 83))
+                .addComponent(lblPurchaseHistory)
+                .addContainerGap(293, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(49, 49, 49)
-                    .addComponent(jLabel7)
+                    .addComponent(lblHistory)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jButton5)
+                    .addComponent(btnDelete)
                     .addGap(29, 29, 29)
-                    .addComponent(jButton6)
+                    .addComponent(btnViewOrder)
                     .addGap(134, 134, 134))
                 .addGroup(layout.createSequentialGroup()
                     .addGap(37, 37, 37)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
@@ -114,43 +125,102 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(lblPurchaseHistory)
+                    .addComponent(btnBack))
                 .addContainerGap(356, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(116, 116, 116)
-                    .addComponent(jLabel7)
+                    .addComponent(lblHistory)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton5)
-                        .addComponent(jButton6)
-                        .addComponent(jButton7))
+                        .addComponent(btnDelete)
+                        .addComponent(btnViewOrder))
                     .addContainerGap(117, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        ViewCustomerDetailsJPanel viewPanel = new ViewCustomerDetailsJPanel(mainWorkArea, business);
+        mainWorkArea.add("ViewCustomerDetails", viewPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "ViewCustomerDetails");
+    }//GEN-LAST:event_btnViewOrderActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+          if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this order?", 
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getOrderDirectory().removeOrder(selectedOrder);
+            JOptionPane.showMessageDialog(this, "Order deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            selectedOrder = null;
+            refreshTable();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        mainWorkArea.remove(this);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnViewOrder;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lblHistory;
+    private javax.swing.JLabel lblPurchaseHistory;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTable() {
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        
+        for (Order order : business.getOrderDirectory().getOrderList()) {
+            Object[] row = new Object[5];
+            row[0] = order.getOrderId();
+            row[1] = sdf.format(order.getOrderDateTime());
+            row[2] = order.getOrderStatus();
+            row[3] = order.getProduct().getProductName();
+            row[4] = "$" + order.getTotalPrice();
+            model.addRow(row);
+        }    }
+
+    private void addTableSelectionListener() {
+        jTable2.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable2.getSelectedRow() != -1) {
+                int selectedRow = jTable2.getSelectedRow();
+                int orderId = (int) jTable2.getValueAt(selectedRow, 0);
+                
+                for (Order order : business.getOrderDirectory().getOrderList()) {
+                    if (order.getOrderId() == orderId) {
+                        selectedOrder = order;
+                        break;
+                    }
+                }
+            }
+        });    }
 }

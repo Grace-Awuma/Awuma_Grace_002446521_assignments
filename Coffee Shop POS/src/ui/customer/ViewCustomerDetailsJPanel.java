@@ -4,17 +4,28 @@
  */
 package ui.customer;
 
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Business;
+import model.Order;
+
 /**
  *
  * @author grace
  */
 public class ViewCustomerDetailsJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
+    private Order selectedOrder;
     /**
      * Creates new form ViewCustomerDetailsJPanel
      */
-    public ViewCustomerDetailsJPanel() {
+    public ViewCustomerDetailsJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        refreshTable();
+        addTableSelectionListener();
     }
 
     /**
@@ -26,57 +37,57 @@ public class ViewCustomerDetailsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton7 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        txtProduct = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
+        btnUpdateOrder = new javax.swing.JButton();
+        btnCancelOrder = new javax.swing.JButton();
+        lblOrderID = new javax.swing.JLabel();
+        lblOrderType = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblProduct = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        lblQuantity = new javax.swing.JLabel();
+        txtOrderID = new javax.swing.JTextField();
+        txtOrderType = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtSearchOrderID = new javax.swing.JTextField();
+        txtSearchItem = new javax.swing.JTextField();
 
-        jButton7.setText("Update Order");
+        btnSave.setText("Save");
 
-        jButton3.setText("Update Order");
+        btnUpdateOrder.setText("Update Order");
 
-        jButton4.setText("Cancel Order");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelOrder.setText("Cancel Order");
+        btnCancelOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCancelOrderActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Order ID");
+        lblOrderID.setText("Order ID");
 
-        jLabel4.setText("Status");
+        lblOrderType.setText("Order Type");
 
         jLabel1.setText("Search by Order ID");
 
-        jLabel5.setText("Item");
+        lblProduct.setText("Product");
 
         jLabel2.setText("Search by Item");
 
-        jLabel6.setText("Quantity");
+        lblQuantity.setText("Quantity");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Order Type", "Item", "Price"
+                "Order ID", "Order Type", "Product", "Total Price", "Order Date/Time"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -85,9 +96,17 @@ public class ViewCustomerDetailsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField1.setText("jTextField1");
+        txtSearchOrderID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchOrderIDActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField2");
+        txtSearchItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchItemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,28 +124,28 @@ public class ViewCustomerDetailsJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSearchOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(lblQuantity)
+                            .addComponent(lblProduct)
+                            .addComponent(lblOrderType)
+                            .addComponent(lblOrderID))
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)))
+                            .addComponent(txtOrderID, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(txtOrderType)
+                            .addComponent(txtProduct)
+                            .addComponent(txtQuantity)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jButton3)
+                        .addComponent(btnUpdateOrder)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton4)
+                        .addComponent(btnCancelOrder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7)))
+                        .addComponent(btnSave)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,60 +154,195 @@ public class ViewCustomerDetailsJPanel extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearchOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrderID))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblOrderType)
+                    .addComponent(txtOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblProduct)
+                    .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton7))
+                    .addComponent(btnUpdateOrder)
+                    .addComponent(btnCancelOrder)
+                    .addComponent(btnSave))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnCancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelOrderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel this order?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getOrderDirectory().removeOrder(selectedOrder);
+            JOptionPane.showMessageDialog(this, "Order cancelled successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearFields();
+            refreshTable();
+        }
+    }//GEN-LAST:event_btnCancelOrderActionPerformed
+
+    private void txtSearchOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchOrderIDActionPerformed
+        // TODO add your handling code here:
+        searchByOrderId();
+    }
+    private void searchByOrderId() {
+        String orderIdText = txtSearchOrderID.getText().trim();
+        if (orderIdText.isEmpty()) {
+            refreshTable();
+            return;
+        }
+        
+        try {
+            int orderId = Integer.parseInt(orderIdText);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+            
+            for (Order order : business.getOrderDirectory().getOrderList()) {
+                if (order.getOrderId() == orderId) {
+                    Object[] row = new Object[5];
+                    row[0] = order.getOrderId();
+                    row[1] = order.getOrderType();
+                    row[2] = order.getProduct().getProductName();
+                    row[3] = "$" + order.getTotalPrice();
+                    row[4] = sdf.format(order.getOrderDateTime());
+                    model.addRow(row);
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Order not found", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Order ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtSearchOrderIDActionPerformed
+
+    private void txtSearchItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchItemActionPerformed
+        // TODO add your handling code here:
+          searchByItem();
+    }//GEN-LAST:event_txtSearchItemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnCancelOrder;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdateOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblOrderID;
+    private javax.swing.JLabel lblOrderType;
+    private javax.swing.JLabel lblProduct;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JTextField txtOrderID;
+    private javax.swing.JTextField txtOrderType;
+    private javax.swing.JTextField txtProduct;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtSearchItem;
+    private javax.swing.JTextField txtSearchOrderID;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        
+        for (Order order : business.getOrderDirectory().getOrderList()) {
+            Object[] row = new Object[5];
+            row[0] = order.getOrderId();
+            row[1] = order.getOrderType();
+            row[2] = order.getProduct().getProductName();
+            row[3] = "$" + order.getTotalPrice();
+            row[4] = sdf.format(order.getOrderDateTime());
+            model.addRow(row);
+        }    }
+
+    private void addTableSelectionListener() {
+ jTable1.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable1.getSelectedRow() != -1) {
+                int selectedRow = jTable1.getSelectedRow();
+                int orderId = (int) jTable1.getValueAt(selectedRow, 0);
+                
+                for (Order order : business.getOrderDirectory().getOrderList()) {
+                    if (order.getOrderId() == orderId) {
+                        displayOrderDetails(order);
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    private void displayOrderDetails(Order order) {
+        selectedOrder = order;
+        txtOrderID.setText(String.valueOf(order.getOrderId()));
+        txtOrderType.setText(order.getOrderType());
+        txtProduct.setText(order.getProduct().getProductName());
+        txtQuantity.setText(String.valueOf(order.getQuantity()));
+        
+        txtOrderID.setEditable(false);    }
+
+    private void clearFields() {
+        txtOrderID.setText("");
+        txtOrderType.setText("");
+        txtProduct.setText("");
+        txtQuantity.setText("");
+        txtSearchOrderID.setText("");
+        txtSearchItem.setText("");
+        selectedOrder = null;
+    }   
+
+    private void searchByItem() {
+         String itemName = txtSearchItem.getText().trim();
+        if (itemName.isEmpty()) {
+            refreshTable();
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        boolean found = false;
+        
+        for (Order order : business.getOrderDirectory().getOrderList()) {
+            if (order.getProduct().getProductName().toLowerCase().contains(itemName.toLowerCase())) {
+                Object[] row = new Object[5];
+                row[0] = order.getOrderId();
+                row[1] = order.getOrderType();
+                row[2] = order.getProduct().getProductName();
+                row[3] = "$" + order.getTotalPrice();
+                row[4] = sdf.format(order.getOrderDateTime());
+                model.addRow(row);
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            JOptionPane.showMessageDialog(this, "No orders found with that item", "Error", JOptionPane.ERROR_MESSAGE);
+            refreshTable();
+        }    }
 }

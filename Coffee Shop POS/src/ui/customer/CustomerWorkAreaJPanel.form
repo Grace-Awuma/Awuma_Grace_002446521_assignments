@@ -79,16 +79,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Order"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrderActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnView">
               <Properties>
                 <Property name="text" type="java.lang.String" value="View"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHistory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="History"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistoryActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHome">
               <Properties>

@@ -20,16 +20,20 @@ public class OrderDirectory {
     }
     
     public Customer addCustomer(int customerId, String firstName, String lastName, String contact) {
-        Customer customer = new Customer(customerId, firstName, lastName, contact);
-        customerList.add(customer);
-        return customer;
+    if (customerId == -1) {
+        customerId = 1000 + customerList.size() + 1; // Auto-generate
     }
+    Customer customer = new Customer(customerId, firstName, lastName, contact);
+    customerList.add(customer);
+    return customer;
+}
     
     public Order addOrder(int orderId, java.util.Date orderDateTime, String orderType, String paymentMethod, 
                          String orderStatus, Product product, Customer customer, int quantity) {
         Order order = new Order(orderId, orderDateTime, orderType, paymentMethod, orderStatus, product, customer, quantity);
         orderList.add(order);
         return order;
+        
     }
     
     public Customer searchCustomerById(int customerId) {
@@ -76,4 +80,8 @@ public class OrderDirectory {
     public void removeOrder(Order order) {
         orderList.remove(order);
     }
+    public Customer addCustomer(String firstName, String lastName, String contact) {
+    int customerId = 1000 + customerList.size() + 1; // Auto-generate starting from 1000
+    return addCustomer(customerId, firstName, lastName, contact); // Call the existing method
+}
 }
