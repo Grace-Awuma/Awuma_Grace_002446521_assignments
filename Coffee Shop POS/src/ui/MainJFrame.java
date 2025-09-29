@@ -26,87 +26,8 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        menuBar = new javax.swing.JPanel();
-        lblCofeeShopPOS = new javax.swing.JLabel();
-        btnSearchCustomers = new javax.swing.JButton();
-        btnListOrders = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
-        btnManageProducts = new javax.swing.JButton();
-        btnAddCustomerOrder = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        menuBar.setBackground(new java.awt.Color(0, 204, 204));
-
-        lblCofeeShopPOS.setText("Coffee Shop POS");
-
-        btnSearchCustomers.setText("Search Customers");
-
-        btnListOrders.setText("List Orders");
-
-        btnHome.setText("Home");
-
-        btnManageProducts.setText("Manage Products");
-
-        btnAddCustomerOrder.setText("Add Customer + Order");
-
-        javax.swing.GroupLayout menuBarLayout = new javax.swing.GroupLayout(menuBar);
-        menuBar.setLayout(menuBarLayout);
-        menuBarLayout.setHorizontalGroup(
-            menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuBarLayout.createSequentialGroup()
-                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuBarLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(lblCofeeShopPOS, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuBarLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAddCustomerOrder)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnManageProducts)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearchCustomers)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnListOrders)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnHome)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        menuBarLayout.setVerticalGroup(
-            menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCofeeShopPOS)
-                .addGap(27, 27, 27)
-                .addGroup(menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearchCustomers)
-                    .addComponent(btnListOrders)
-                    .addComponent(btnHome)
-                    .addComponent(btnManageProducts)
-                    .addComponent(btnAddCustomerOrder))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-
-        jSplitPane1.setTopComponent(menuBar);
-
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel2.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(jPanel2);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
-        );
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,14 +68,5 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddCustomerOrder;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnListOrders;
-    private javax.swing.JButton btnManageProducts;
-    private javax.swing.JButton btnSearchCustomers;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblCofeeShopPOS;
-    private javax.swing.JPanel menuBar;
     // End of variables declaration//GEN-END:variables
 }

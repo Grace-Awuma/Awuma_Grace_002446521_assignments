@@ -26,19 +26,116 @@ public class HomeJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblUserName = new javax.swing.JLabel();
+        cmbRoles = new javax.swing.JComboBox<>();
+        lblRole = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        lblCoffeeShop = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+
+        lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblUserName.setText("UserName ");
+
+        cmbRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRolesActionPerformed(evt);
+            }
+        });
+
+        lblRole.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRole.setText("Choose Role:");
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        lblCoffeeShop.setText("Welcome to Coffee Shop POS");
+
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCoffeeShop, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(178, 178, 178))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(170, 170, 170)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblUserName, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblRole, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnLogin)
+                        .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(182, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(lblCoffeeShop)
+                .addGap(145, 145, 145)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(170, 170, 170)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblRole))
+                    .addGap(18, 18, 18)
+                    .addComponent(lblUserName)
+                    .addGap(26, 26, 26)
+                    .addComponent(btnLogin)
+                    .addContainerGap(174, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmbRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRolesActionPerformed
+        // TODO add your handling code here:
+        updateSupplierVisibility();
+    }//GEN-LAST:event_cmbRolesActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        JPanel selectedPanel = (JPanel)cmbRoles.getSelectedItem();
+        if (selectedPanel.getClass() == SupplierWorkAreaJPanel.class){
+            if (selectedSupplier == null){
+                JOptionPane.showMessageDialog(this,"Please select a supplier to login");
+                return;
+            } else {
+                selectedPanel = new SupplierWorkAreaJPanel(mainWorkArea,selectedSupplier);
+            }
+        }
+        mainWorkArea.add("WorkAreaJPanel", selectedPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JComboBox<Object> cmbRoles;
+    private javax.swing.JLabel lblCoffeeShop;
+    private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
