@@ -26,7 +26,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        splitPanel = new javax.swing.JSplitPane();
         customerMenuBar = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         btnOrder = new javax.swing.JButton();
@@ -37,7 +37,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         lblWelcome.setText("<Welcome Msg>");
 
@@ -84,12 +84,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setTopComponent(customerMenuBar);
+        splitPanel.setTopComponent(customerMenuBar);
 
         WorkArea.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(WorkArea);
+        splitPanel.setRightComponent(WorkArea);
 
-        add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        add(splitPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -104,7 +104,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnView;
     private javax.swing.JPanel customerMenuBar;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JSplitPane splitPanel;
     // End of variables declaration//GEN-END:variables
 }

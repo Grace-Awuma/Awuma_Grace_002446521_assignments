@@ -4,17 +4,29 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JPanel;
+import model.Business;
+import model.Customer;
+import model.Product;
+
 /**
  *
  * @author grace
  */
 public class MainJFrame extends javax.swing.JFrame {
-
+    private Business business;
+    private JPanel mainWorkArea;
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+         initializeBusiness();
+        
+        // Create and display home panel
+        initializeHomePanel();
     }
 
     /**
@@ -65,6 +77,45 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
+    }
+
+    private void initializeBusiness() {
+         business = new Business("Grace's Coffee Shop");
+        
+        // Add sample products (required by assignment - minimum 5)
+        business.getProductCatalog().addProduct(101, "Espresso", "Coffee", 2.50, 50, 3);
+        business.getProductCatalog().addProduct(102, "Latte", "Coffee", 4.00, 30, 5);
+        business.getProductCatalog().addProduct(103, "Green Tea", "Tea", 2.00, 40, 4);
+        business.getProductCatalog().addProduct(104, "Croissant", "Pastry", 3.50, 20, 2);
+        business.getProductCatalog().addProduct(105, "Club Sandwich", "Sandwich", 7.50, 15, 8);
+        
+        // Add sample customers with same names for search testing (required by assignment)
+        business.getOrderDirectory().addCustomer(1001, "John", "Smith", "555-0101");
+        business.getOrderDirectory().addCustomer(1002, "John", "Doe", "555-0102");
+        business.getOrderDirectory().addCustomer(1003, "Jane", "Smith", "555-0103");
+        business.getOrderDirectory().addCustomer(1004, "Alice", "Johnson", "555-0104");
+        business.getOrderDirectory().addCustomer(1005, "Bob", "Wilson", "555-0105");
+        
+        // Add sample orders (minimum 3 required by assignment)
+        Customer customer1 = business.getOrderDirectory().searchCustomerById(1001);
+        Customer customer2 = business.getOrderDirectory().searchCustomerById(1002);
+        Customer customer3 = business.getOrderDirectory().searchCustomerById(1003);
+        
+        Product latte = business.getProductCatalog().searchProduct(102);
+        Product espresso = business.getProductCatalog().searchProduct(101);
+        Product sandwich = business.getProductCatalog().searchProduct(105);
+        
+        business.getOrderDirectory().addOrder(2001, new Date(), "Dine-in", "Cash", "Completed", latte, customer1, 1);
+        business.getOrderDirectory().addOrder(2002, new Date(), "Takeout", "Card", "Ready", espresso, customer2, 2);
+        business.getOrderDirectory().addOrder(2003, new Date(), "Pickup", "Mobile", "Preparing", sandwich, customer3, 1);
+    }
+
+    private void initializeHomePanel() {
+ HomeJPanel homePanel = new HomeJPanel(mainWorkArea, business);
+        mainWorkArea.add("Home", homePanel);
+        
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.show(mainWorkArea, "Home");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -192,7 +192,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
         // TODO add your handling code here:
-        backAction();
+        
     }//GEN-LAST:event_backButton1ActionPerformed
 
 

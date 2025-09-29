@@ -4,17 +4,28 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Business;
+import ui.customer.CustomerWorkAreaJPanel;
+import ui.manager.ManagerWorkAreaJPanel;
+
 /**
  *
  * @author grace
  */
 public class HomeJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
     /**
      * Creates new form MainMenuJPanel
      */
-    public HomeJPanel() {
+    public HomeJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        populateRoles();
     }
 
     /**
@@ -106,23 +117,46 @@ public class HomeJPanel extends javax.swing.JPanel {
 
     private void cmbRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRolesActionPerformed
         // TODO add your handling code here:
-        updateSupplierVisibility();
+        updateManagerVisibility();
     }//GEN-LAST:event_cmbRolesActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        JPanel selectedPanel = (JPanel)cmbRoles.getSelectedItem();
-        if (selectedPanel.getClass() == SupplierWorkAreaJPanel.class){
-            if (selectedSupplier == null){
-                JOptionPane.showMessageDialog(this,"Please select a supplier to login");
-                return;
-            } else {
-                selectedPanel = new SupplierWorkAreaJPanel(mainWorkArea,selectedSupplier);
-            }
+        String selectedRole = (String) cmbRoles.getSelectedItem();
+        String userName = txtUserName.getText().trim();
+
+        // Validation
+        if (selectedRole == null) {
+            JOptionPane.showMessageDialog(this, "Please select a role", "Login Error", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        mainWorkArea.add("WorkAreaJPanel", selectedPanel);
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.next(mainWorkArea);
+
+
+        // Navigate based on role
+        try {
+            if (selectedRole.equals("Manager")) {
+                // Navigate to Manager Work Area
+                ManagerWorkAreaJPanel managerPanel = new ManagerWorkAreaJPanel();
+                mainWorkArea.add("ManagerWorkArea", managerPanel);
+                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+                layout.show(mainWorkArea, "ManagerWorkArea");
+            } else if (selectedRole.equals("Customer")) {
+                // Navigate to Customer Work Area
+                CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel();
+                mainWorkArea.add("CustomerWorkArea", customerPanel);
+                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+                layout.show(mainWorkArea, "CustomerWorkArea");
+            }
+
+            //Welcome Msg
+            if (!userName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Welcome " + userName + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Login failed: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -138,4 +172,13 @@ public class HomeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblUserName;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    private void populateRoles() {
+        cmbRoles.removeAllItems();
+        cmbRoles.addItem("Manager");
+        cmbRoles.addItem("Customer");    }
+
+    private void updateManagerVisibility() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
