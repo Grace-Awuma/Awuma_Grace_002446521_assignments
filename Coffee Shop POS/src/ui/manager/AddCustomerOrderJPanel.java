@@ -4,17 +4,31 @@
  */
 package ui.manager;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Business;
+import model.Customer;
+import model.Order;
+import model.Product;
+
 /**
  *
  * @author grace
  */
 public class AddCustomerOrderJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
     /**
      * Creates new form AddCustomerOrderJPanel
      */
-    public AddCustomerOrderJPanel() {
+    public AddCustomerOrderJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        
+        this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        
+        populateComboBoxes();
     }
 
     /**
@@ -241,6 +255,60 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
 
     private void btnAddCustomerandOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerandOrderActionPerformed
         // TODO add your handling code here:
+         if (txtCustomerID.getText().trim().isEmpty() || 
+            txtFirstName.getText().trim().isEmpty() || 
+            txtLastName.getText().trim().isEmpty() || 
+            txtContact.getText().trim().isEmpty() ||
+            txtOrderID.getText().trim().isEmpty() ||
+            txtQuantity.getText().trim().isEmpty()) {
+            
+            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            int customerId = Integer.parseInt(txtCustomerID.getText().trim());
+            int orderId = Integer.parseInt(txtOrderID.getText().trim());
+            int quantity = Integer.parseInt(txtQuantity.getText().trim());
+            
+            if (quantity <= 0) {
+                JOptionPane.showMessageDialog(this, "Quantity must be positive", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            if (cmbProductOpted.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Please select a product", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            Customer customer = business.getOrderDirectory().addCustomer(
+                customerId,
+                txtFirstName.getText().trim(),
+                txtLastName.getText().trim(),
+                txtContact.getText().trim()
+            );
+            
+            Product selectedProduct = (Product) cmbProductOpted.getSelectedItem();
+            
+            Order order = business.getOrderDirectory().addOrder(
+                orderId,
+                new Date(),
+                (String) cmbOrderType.getSelectedItem(),
+                (String) cmbPaymentMethod.getSelectedItem(),
+                (String) cmbOrderStatus.getSelectedItem(),
+                selectedProduct,
+                customer,
+                quantity
+            );
+            
+            JOptionPane.showMessageDialog(this, "Customer and Order added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            resetForm();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Customer ID, Order ID and Quantity must be valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAddCustomerandOrderActionPerformed
 
     private void chkPaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPaidActionPerformed
@@ -284,4 +352,31 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtOrderID;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
+
+    private void populateComboBoxes() {
+  cmbOrderType.removeAllItems();
+        cmbOrderType.addItem("Dine-in");
+        cmbOrderType.addItem("Takeout");
+        cmbOrderType.addItem("Pickup");
+        
+        cmbPaymentMethod.removeAllItems();
+        cmbPaymentMethod.addItem("Cash");
+        cmbPaymentMethod.addItem("Card");
+        cmbPaymentMethod.addItem("Mobile");
+        
+        cmbOrderStatus.removeAllItems();
+        cmbOrderStatus.addItem("Pending");
+        cmbOrderStatus.addItem("Preparing");
+        cmbOrderStatus.addItem("Ready");
+        cmbOrderStatus.addItem("Completed");
+        
+        cmbProductOpted.removeAllItems();
+        for (Product product : business.getProductCatalog().getProductList()) {
+            cmbProductOpted.addItem(product);
+        }
+    }
+
+    private void resetForm() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
