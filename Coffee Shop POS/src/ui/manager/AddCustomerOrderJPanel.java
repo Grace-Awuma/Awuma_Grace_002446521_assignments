@@ -377,6 +377,17 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     }
 
     private void resetForm() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+txtCustomerID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtContact.setText("");
+        txtOrderID.setText("");
+        txtQuantity.setText("");
+        chkPaid.setSelected(false);
+        
+        if (cmbOrderType.getItemCount() > 0) cmbOrderType.setSelectedIndex(0);
+        if (cmbPaymentMethod.getItemCount() > 0) cmbPaymentMethod.setSelectedIndex(0);
+        if (cmbOrderStatus.getItemCount() > 0) cmbOrderStatus.setSelectedIndex(0);
+        if (cmbProductOpted.getItemCount() > 0) cmbProductOpted.setSelectedIndex(0);
+        }
 }

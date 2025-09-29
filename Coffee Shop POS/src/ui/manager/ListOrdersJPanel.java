@@ -4,17 +4,33 @@
  */
 package ui.manager;
 
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Business;
+import model.Order;
+
 /**
  *
  * @author grace
  */
 public class ListOrdersJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
+    private Order selectedOrder;
     /**
      * Creates new form ListOrdersJPanel
      */
-    public ListOrdersJPanel() {
+    public ListOrdersJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        
+        this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        
+        populateStatusSpinner();
+        refreshTable();
+        addTableSelectionListener();
     }
 
     /**
@@ -27,16 +43,17 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        btnListOrders = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        cmbSetStatus = new javax.swing.JComboBox<>();
+        btnDeleteOrder = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel1.setText("Set Status");
 
-        jButton1.setText("jButton1");
+        btnListOrders.setText("Orders ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,6 +73,15 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        cmbSetStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnDeleteOrder.setText("Delete Order");
+        btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,13 +92,17 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton1))
+                        .addComponent(cmbSetStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnListOrders))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnDeleteOrder)
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,20 +110,82 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnListOrders)
+                    .addComponent(cmbSetStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDeleteOrder)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeleteOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrderActionPerformed
+        // TODO add your handling code here:
+         if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this order?", 
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getOrderDirectory().removeOrder(selectedOrder);
+            JOptionPane.showMessageDialog(this, "Order deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            selectedOrder = null;
+            refreshTable();
+        }
+    }//GEN-LAST:event_btnDeleteOrderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDeleteOrder;
+    private javax.swing.JButton btnListOrders;
+    private javax.swing.JComboBox<String> cmbSetStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void populateStatusSpinner() {
+        cmbSetStatus.removeAllItems();
+        cmbSetStatus.addItem("Pending");
+        cmbSetStatus.addItem("Preparing");
+        cmbSetStatus.addItem("Ready");
+        cmbSetStatus.addItem("Completed");    }
+
+    private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        
+        for (Order order : business.getOrderDirectory().getOrderList()) {
+            Object[] row = new Object[5];
+            row[0] = order.getCustomer().getCustomerId();
+            row[1] = order.getOrderId();
+            row[2] = order.getOrderStatus();
+            row[3] = order.getProduct().getProductName();
+            row[4] = "$" + order.getTotalPrice();
+            model.addRow(row);
+        }
+        }
+
+    private void addTableSelectionListener() {
+    jTable1.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable1.getSelectedRow() != -1) {
+                int selectedRow = jTable1.getSelectedRow();
+                int orderId = (int) jTable1.getValueAt(selectedRow, 1);
+                
+                for (Order order : business.getOrderDirectory().getOrderList()) {
+                    if (order.getOrderId() == orderId) {
+                        selectedOrder = order;
+                        break;
+                    }
+                }
+            }
+        });    }
 }

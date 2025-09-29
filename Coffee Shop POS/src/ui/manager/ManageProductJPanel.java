@@ -4,17 +4,30 @@
  */
 package ui.manager;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Business;
+import model.Product;
+
 /**
  *
  * @author grace
  */
 public class ManageProductJPanel extends javax.swing.JPanel {
-
+     private JPanel mainWorkArea;
+    private Business business;
+    private Product selectedProduct;
     /**
      * Creates new form ManageProductJPanel
      */
-    public ManageProductJPanel() {
+    public ManageProductJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        
+        populateCategoryComboBox();
+        refreshTable();
+        addTableSelectionListener();
     }
 
     /**
@@ -75,8 +88,18 @@ public class ManageProductJPanel extends javax.swing.JPanel {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
 
@@ -180,11 +203,84 @@ public class ManageProductJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if (txtProductID.getText().trim().isEmpty() || 
+            txtProductName.getText().trim().isEmpty() || 
+            txtPrice.getText().trim().isEmpty() ||
+            txtNumber.getText().trim().isEmpty() ||
+            txtPrepTime.getText().trim().isEmpty()) {
+            
+            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            int productId = Integer.parseInt(txtProductID.getText().trim());
+            String productName = txtProductName.getText().trim();
+            String category = (String) cmbCategory.getSelectedItem();
+            double price = Double.parseDouble(txtPrice.getText().trim());
+            int number = Integer.parseInt(txtNumber.getText().trim());
+            int prepTime = Integer.parseInt(txtPrepTime.getText().trim());
+            
+            business.getProductCatalog().addProduct(productId, productName, category, price, number, prepTime);
+            
+            JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+            refreshTable();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers for ID, Price, Number and Prep Time", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtProductIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductIDActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if (selectedProduct == null) {
+            JOptionPane.showMessageDialog(this, "Please select a product from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            selectedProduct.setProductName(txtProductName.getText().trim());
+            selectedProduct.setCategory((String) cmbCategory.getSelectedItem());
+            selectedProduct.setPrice(Double.parseDouble(txtPrice.getText().trim()));
+            selectedProduct.setNumber(Integer.parseInt(txtNumber.getText().trim()));
+            selectedProduct.setPreparationTime(Integer.parseInt(txtPrepTime.getText().trim()));
+            
+            JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            refreshTable();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         if (selectedProduct == null) {
+            JOptionPane.showMessageDialog(this, "Please select a product from the table", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this product?", 
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getProductCatalog().removeProduct(selectedProduct);
+            JOptionPane.showMessageDialog(this, "Product deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+            refreshTable();
+        }
+    }
+    
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {
+        clearForm();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,4 +303,46 @@ public class ManageProductJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtProductID;
     private javax.swing.JTextField txtProductName;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void populateCategoryComboBox() {
+        cmbCategory.removeAllItems();
+        cmbCategory.addItem("Coffee");
+        cmbCategory.addItem("Tea");
+        cmbCategory.addItem("Pastry");
+        cmbCategory.addItem("Sandwich");    }
+
+    private void refreshTable() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void addTableSelectionListener() {
+        jTable1.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable1.getSelectedRow() != -1) {
+                int selectedRow = jTable1.getSelectedRow();
+                int productId = (int) jTable1.getValueAt(selectedRow, 0);
+                
+                selectedProduct = business.getProductCatalog().searchProduct(productId);
+                if (selectedProduct != null) {
+                    displayProductDetails(selectedProduct);
+                }
+            }
+        });    }
+
+    private void displayProductDetails(Product selectedProduct) {
+txtProductID.setText(String.valueOf(product.getProductId()));
+        txtProductName.setText(product.getProductName());
+        cmbCategory.setSelectedItem(product.getCategory());
+        txtPrice.setText(String.valueOf(product.getPrice()));
+        txtNumber.setText(String.valueOf(product.getNumber()));
+        txtPrepTime.setText(String.valueOf(product.getPreparationTime()));    }
+
+    private void clearForm() {
+        txtProductID.setText("");
+        txtProductName.setText("");
+        txtPrice.setText("");
+        txtNumber.setText("");
+        txtPrepTime.setText("");
+        if (cmbCategory.getItemCount() > 0) cmbCategory.setSelectedIndex(0);
+        selectedProduct = null;
+    }    }
+
