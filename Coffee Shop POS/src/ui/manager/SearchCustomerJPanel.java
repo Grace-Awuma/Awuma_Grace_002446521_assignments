@@ -4,17 +4,34 @@
  */
 package ui.manager;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Business;
+import model.Customer;
+import model.Order;
+
 /**
  *
  * @author grace
  */
 public class SearchCustomerJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
+    private Customer selectedCustomer;
+    private Order selectedOrder;
     /**
      * Creates new form SearchCustomerJPanel
      */
-    public SearchCustomerJPanel() {
+    public SearchCustomerJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+         this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        
+        populateStatusComboBox();
+        addTableSelectionListeners();
     }
 
     /**
@@ -26,51 +43,56 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        btnViewOrder = new javax.swing.JButton();
+        btnUpdateStatus = new javax.swing.JButton();
+        btnSearchName = new javax.swing.JButton();
+        txtLastName = new javax.swing.JTextField();
+        lblSetStatus = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        txtContact = new javax.swing.JTextField();
+        cmbStatus = new javax.swing.JComboBox<>();
+        btnUpdateCustomer = new javax.swing.JButton();
+        btnDeleteCustomer = new javax.swing.JButton();
+        lblCustomerID = new javax.swing.JLabel();
+        lblCustomerHistory = new javax.swing.JLabel();
+        lblFirstName = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        lblContact = new javax.swing.JLabel();
+        lblSearchCustomerID = new javax.swing.JTextField();
+        txtCustomerID = new javax.swing.JTextField();
+        btnDeleteOrder = new javax.swing.JButton();
+        txtSearchName = new javax.swing.JTextField();
+        txtFirstName = new javax.swing.JTextField();
+        btnSearchID = new javax.swing.JButton();
 
-        jButton6.setText("View Order");
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnViewOrder.setText("View Order");
+        btnViewOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnViewOrderActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Update Status");
-
-        jButton2.setText("Search Name");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateStatus.setText("Update Status");
+        btnUpdateStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdateStatusActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Set Status:");
+        btnSearchName.setText("Search Name");
+        btnSearchName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchNameActionPerformed(evt);
+            }
+        });
+
+        lblSetStatus.setText("Set Status:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,17 +112,27 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton3.setText("Update Customer");
+        btnUpdateCustomer.setText("Update Customer");
+        btnUpdateCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateCustomerActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("DeleteCustomer");
+        btnDeleteCustomer.setText("DeleteCustomer");
+        btnDeleteCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteCustomerActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Customer ID");
+        lblCustomerID.setText("Customer ID");
 
-        jLabel7.setText("Customer History");
+        lblCustomerHistory.setText("Customer History");
 
-        jLabel4.setText("First Name");
+        lblFirstName.setText("First Name");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,29 +154,29 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Search by Customer ID");
 
-        jLabel5.setText("Last Name");
+        lblLastName.setText("Last Name");
 
         jLabel2.setText("Search by Name");
 
-        jLabel6.setText("Contact");
+        lblContact.setText("Contact");
 
-        jButton5.setText("Delete Order");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteOrder.setText("Delete Order");
+        btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnDeleteOrderActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtSearchNameActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Search ID");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchID.setText("Search ID");
+        btnSearchID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSearchIDActionPerformed(evt);
             }
         });
 
@@ -161,12 +193,12 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSearchCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(btnSearchID)
+                            .addComponent(btnSearchName))
                         .addGap(82, 82, 82))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -176,40 +208,40 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(lblContact)
+                    .addComponent(lblLastName)
+                    .addComponent(lblFirstName)
+                    .addComponent(lblCustomerID))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(btnUpdateCustomer)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton4)
+                        .addComponent(btnDeleteCustomer)
                         .addGap(45, 45, 45))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jLabel7)
+                .addComponent(lblCustomerHistory)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel8)
+                .addComponent(lblSetStatus)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnUpdateStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(btnDeleteOrder)
                 .addGap(29, 29, 29)
-                .addComponent(jButton6)
+                .addComponent(btnViewOrder)
                 .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
@@ -218,99 +250,338 @@ public class SearchCustomerJPanel extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(lblSearchCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchID))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(txtSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchName))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCustomerID)
+                    .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblContact)
+                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDeleteCustomer)
+                    .addComponent(btnUpdateCustomer))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(lblCustomerHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton5)
-                        .addComponent(jButton6)
-                        .addComponent(jButton7))
+                        .addComponent(btnDeleteOrder)
+                        .addComponent(btnViewOrder)
+                        .addComponent(btnUpdateStatus))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblSetStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+         if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String orderDetails = "Order ID: " + selectedOrder.getOrderId() + "\n" +
+                            "Product: " + selectedOrder.getProduct().getProductName() + "\n" +
+                            "Quantity: " + selectedOrder.getQuantity() + "\n" +
+                            "Total: $" + selectedOrder.getTotalPrice() + "\n" +
+                            "Status: " + selectedOrder.getOrderStatus();
+        
+        JOptionPane.showMessageDialog(this, orderDetails, "Order Details", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnViewOrderActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSearchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         String name = txtSearchName.getText().trim();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a name", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        ArrayList<Customer> foundCustomers = business.getOrderDirectory().searchCustomersByName(name);
+        
+        if (!foundCustomers.isEmpty()) {
+            displaySearchResults(foundCustomers);
+        } else {
+            JOptionPane.showMessageDialog(this, "No customers found with that name", "Error", JOptionPane.ERROR_MESSAGE);
+            clearCustomerTable();
+        }
+    }//GEN-LAST:event_btnSearchNameActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnDeleteOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+         if (selectedOrder == null) {
+            JOptionPane.showMessageDialog(this, "Please select an order", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this order?", 
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getOrderDirectory().removeOrder(selectedOrder);
+            JOptionPane.showMessageDialog(this, "Order deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            selectedOrder = null;
+            refreshOrderHistoryTable(selectedCustomer);
+        }
+    }//GEN-LAST:event_btnDeleteOrderActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtSearchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtSearchNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSearchIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+          String idText = lblSearchCustomerID.getText().trim();
+        if (idText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a Customer ID", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            int customerId = Integer.parseInt(idText);
+            Customer customer = business.getOrderDirectory().searchCustomerById(customerId);
+            
+            if (customer != null) {
+                displaySearchResults(customer);
+            } else {
+                JOptionPane.showMessageDialog(this, "Customer not found", "Error", JOptionPane.ERROR_MESSAGE);
+                clearCustomerTable();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Customer ID", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSearchIDActionPerformed
+
+    private void btnUpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCustomerActionPerformed
+        // TODO add your handling code here:
+         if (selectedCustomer == null) {
+            JOptionPane.showMessageDialog(this, "Please select a customer", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (txtFirstName.getText().trim().isEmpty() || 
+            txtLastName.getText().trim().isEmpty() || 
+            txtContact.getText().trim().isEmpty()) {
+            
+            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        selectedCustomer.setFirstName(txtFirstName.getText().trim());
+        selectedCustomer.setLastName(txtLastName.getText().trim());
+        selectedCustomer.setContact(txtContact.getText().trim());
+        
+        JOptionPane.showMessageDialog(this, "Customer updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        refreshCustomerTable();
+    }//GEN-LAST:event_btnUpdateCustomerActionPerformed
+
+    private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
+        // TODO add your handling code here:
+        if (selectedCustomer == null) {
+            JOptionPane.showMessageDialog(this, "Please select a customer", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to delete this customer?", 
+            "Confirm Delete", 
+            JOptionPane.YES_NO_OPTION);
+            
+        if (confirm == JOptionPane.YES_OPTION) {
+            business.getOrderDirectory().removeCustomer(selectedCustomer);
+            JOptionPane.showMessageDialog(this, "Customer deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearFields();
+            clearCustomerTable();
+        }
+    }//GEN-LAST:event_btnDeleteCustomerActionPerformed
+
+    private void btnUpdateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStatusActionPerformed
+        // TODO add your handling code here:
+         if (selectedOrder == null) {
+        JOptionPane.showMessageDialog(this, "Please select an order", "Error", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    String newStatus = (String) cmbStatus.getSelectedItem();
+    selectedOrder.setOrderStatus(newStatus);
+    JOptionPane.showMessageDialog(this, "Order status updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+    refreshOrderHistoryTable(selectedCustomer);
+    }//GEN-LAST:event_btnUpdateStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnDeleteCustomer;
+    private javax.swing.JButton btnDeleteOrder;
+    private javax.swing.JButton btnSearchID;
+    private javax.swing.JButton btnSearchName;
+    private javax.swing.JButton btnUpdateCustomer;
+    private javax.swing.JButton btnUpdateStatus;
+    private javax.swing.JButton btnViewOrder;
+    private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblCustomerHistory;
+    private javax.swing.JLabel lblCustomerID;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JTextField lblSearchCustomerID;
+    private javax.swing.JLabel lblSetStatus;
+    private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtCustomerID;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtSearchName;
     // End of variables declaration//GEN-END:variables
+
+    private void populateStatusComboBox() {
+        cmbStatus.removeAllItems();
+        cmbStatus.addItem("Pending");
+        cmbStatus.addItem("Preparing");
+        cmbStatus.addItem("Ready");
+        cmbStatus.addItem("Completed");    }
+
+    private void addTableSelectionListeners() {
+jTable1.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable1.getSelectedRow() != -1) {
+                int selectedRow = jTable1.getSelectedRow();
+                int customerId = (int) jTable1.getValueAt(selectedRow, 0);
+                
+                selectedCustomer = business.getOrderDirectory().searchCustomerById(customerId);
+                if (selectedCustomer != null) {
+                    displayCustomerDetails(selectedCustomer);
+                    refreshOrderHistoryTable(selectedCustomer);
+                }
+            }
+        });
+        
+        jTable2.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jTable2.getSelectedRow() != -1) {
+                int selectedRow = jTable2.getSelectedRow();
+                int orderId = (int) jTable2.getValueAt(selectedRow, 0);
+                
+                for (Order order : business.getOrderDirectory().getOrderList()) {
+                    if (order.getOrderId() == orderId) {
+                        selectedOrder = order;
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    private void displayCustomerDetails(Customer customer) {
+    this.selectedCustomer = customer;
+    txtCustomerID.setText(String.valueOf(customer.getCustomerId()));
+    txtFirstName.setText(customer.getFirstName());
+    txtLastName.setText(customer.getLastName());
+    txtContact.setText(customer.getContact());
+    txtCustomerID.setEditable(false);  
+    }
+    
+    private void displaySearchResults(Customer customer) {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    
+    Object[] row = new Object[4];
+    row[0] = customer.getCustomerId();
+    row[1] = customer.getFirstName();
+    row[2] = customer.getLastName();
+    row[3] = customer.getContact();
+    model.addRow(row);
+    
+    displayCustomerDetails(customer);
+    refreshOrderHistoryTable(customer);
+    
+    }
+    
+    private void displaySearchResults(ArrayList<Customer> customers) {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    
+    for (Customer customer : customers) {
+        Object[] row = new Object[4];
+        row[0] = customer.getCustomerId();
+        row[1] = customer.getFirstName();
+        row[2] = customer.getLastName();
+        row[3] = customer.getContact();
+        model.addRow(row);
+    }
+}
+
+    private void refreshOrderHistoryTable(Customer selectedCustomer) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        ArrayList<Order> customerOrders = business.getOrderDirectory().getOrdersByCustomer(selectedCustomer);
+        
+        for (Order order : customerOrders) {
+            Object[] row = new Object[5];
+            row[0] = order.getOrderId();
+            row[1] = sdf.format(order.getOrderDateTime());
+            row[2] = order.getOrderStatus();
+            row[3] = order.getProduct().getProductName();
+            row[4] = "$" + order.getTotalPrice();
+            model.addRow(row);
+        }   
+    }
+
+    private void clearFields() {
+        lblSearchCustomerID.setText("");
+        txtSearchName.setText("");
+        txtCustomerID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtContact.setText("");
+        selectedCustomer = null;
+        selectedOrder = null;    }
+
+    private void refreshCustomerTable() {
+ if (selectedCustomer != null) {
+            displaySearchResults(selectedCustomer);
+        }
+    }
+
+    private void clearCustomerTable() {
+DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        DefaultTableModel orderModel = (DefaultTableModel) jTable2.getModel();
+        orderModel.setRowCount(0);    }
+
+/**
+ *
+ * @author grace
+ */
+
 }

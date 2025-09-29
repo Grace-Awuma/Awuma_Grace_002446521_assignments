@@ -6,6 +6,7 @@ package ui.manager;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.Business;
 import model.Product;
 
@@ -312,8 +313,19 @@ public class ManageProductJPanel extends javax.swing.JPanel {
         cmbCategory.addItem("Sandwich");    }
 
     private void refreshTable() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        for (Product product : business.getProductCatalog().getProductList()) {
+            Object[] row = new Object[6];
+            row[0] = product.getProductId();
+            row[1] = product.getProductName();
+            row[2] = product.getCategory();
+            row[3] = "$" + product.getPrice();
+            row[4] = product.getNumber();
+            row[5] = product.getPreparationTime() + " min";
+            model.addRow(row);
+        }    }
 
     private void addTableSelectionListener() {
         jTable1.getSelectionModel().addListSelectionListener(e -> {
@@ -329,12 +341,13 @@ public class ManageProductJPanel extends javax.swing.JPanel {
         });    }
 
     private void displayProductDetails(Product selectedProduct) {
-txtProductID.setText(String.valueOf(product.getProductId()));
-        txtProductName.setText(product.getProductName());
-        cmbCategory.setSelectedItem(product.getCategory());
-        txtPrice.setText(String.valueOf(product.getPrice()));
-        txtNumber.setText(String.valueOf(product.getNumber()));
-        txtPrepTime.setText(String.valueOf(product.getPreparationTime()));    }
+    txtProductID.setText(String.valueOf(selectedProduct.getProductId()));
+    txtProductName.setText(selectedProduct.getProductName());
+    cmbCategory.setSelectedItem(selectedProduct.getCategory());
+    txtPrice.setText(String.valueOf(selectedProduct.getPrice()));
+    txtNumber.setText(String.valueOf(selectedProduct.getNumber()));
+    txtPrepTime.setText(String.valueOf(selectedProduct.getPreparationTime()));
+    }
 
     private void clearForm() {
         txtProductID.setText("");
@@ -344,5 +357,6 @@ txtProductID.setText(String.valueOf(product.getProductId()));
         txtPrepTime.setText("");
         if (cmbCategory.getItemCount() > 0) cmbCategory.setSelectedIndex(0);
         selectedProduct = null;
-    }    }
+    }   
+}
 

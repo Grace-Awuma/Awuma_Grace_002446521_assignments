@@ -331,7 +331,7 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbOrderStatus;
     private javax.swing.JComboBox<String> cmbOrderType;
     private javax.swing.JComboBox<String> cmbPaymentMethod;
-    private javax.swing.JComboBox<String> cmbProductOpted;
+    private javax.swing.JComboBox<Object> cmbProductOpted;
     private javax.swing.JLabel lblAddCustomerandOrder;
     private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblCustomerID;
@@ -372,7 +372,7 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
         
         cmbProductOpted.removeAllItems();
         for (Product product : business.getProductCatalog().getProductList()) {
-            cmbProductOpted.addItem(product);
+            cmbProductOpted.addItem(product); 
         }
     }
 

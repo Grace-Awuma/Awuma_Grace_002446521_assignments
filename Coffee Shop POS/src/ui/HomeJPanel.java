@@ -136,13 +136,13 @@ public class HomeJPanel extends javax.swing.JPanel {
         try {
             if (selectedRole.equals("Manager")) {
                 // Navigate to Manager Work Area
-                ManagerWorkAreaJPanel managerPanel = new ManagerWorkAreaJPanel();
+                ManagerWorkAreaJPanel managerPanel = new ManagerWorkAreaJPanel(mainWorkArea, business);
                 mainWorkArea.add("ManagerWorkArea", managerPanel);
                 CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                 layout.show(mainWorkArea, "ManagerWorkArea");
             } else if (selectedRole.equals("Customer")) {
                 // Navigate to Customer Work Area
-                CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel();
+                CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel(mainWorkArea, business);
                 mainWorkArea.add("CustomerWorkArea", customerPanel);
                 CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                 layout.show(mainWorkArea, "CustomerWorkArea");

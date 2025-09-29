@@ -4,17 +4,30 @@
  */
 package ui.manager;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Business;
+import model.Product;
+
 /**
  *
  * @author grace
  */
 public class ViewProductJPanel extends javax.swing.JPanel {
-
+    private JPanel mainWorkArea;
+    private Business business;
+    private Product product;
     /**
      * Creates new form ViewProductJPanel
      */
-    public ViewProductJPanel() {
+    public ViewProductJPanel(JPanel mainWorkArea, Business business, Product product) {
         initComponents();
+         this.mainWorkArea = mainWorkArea;
+        this.business = business;
+        this.product = product;
+        
+        displayProductDetails();
     }
 
     /**
@@ -170,6 +183,24 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        product.setName(txtName.getText().trim());
+        
+        try {
+            double price = Double.parseDouble(txtPrice.getText().trim());
+            product.setPrice(price);
+            
+            JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            
+            txtName.setEditable(false);
+            txtPrice.setEditable(false);
+            btnSave.setEnabled(false);
+            tblFeatures.setEnabled(false);
+            btnAddFeature.setEnabled(false);
+            btnRemoveFeature.setEnabled(false);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid price", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnAddFeatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFeatureActionPerformed
@@ -192,6 +223,9 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
         // TODO add your handling code here:
+        mainWorkArea.remove(this);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
         
     }//GEN-LAST:event_backButton1ActionPerformed
 
@@ -212,4 +246,9 @@ public class ViewProductJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
+
+    private void displayProductDetails() {
+        txtId.setText(String.valueOf(product.getProductId()));
+        txtName.setText(product.getProductName());
+        txtPrice.setText(String.valueOf(product.getPrice()));    }
 }
