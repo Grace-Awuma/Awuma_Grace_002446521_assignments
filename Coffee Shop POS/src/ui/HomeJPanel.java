@@ -179,6 +179,6 @@ public class HomeJPanel extends javax.swing.JPanel {
         cmbRoles.addItem("Customer");    }
 
     private void updateManagerVisibility() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    String selectedRole = (String) cmbRoles.getSelectedItem();
     }
 }

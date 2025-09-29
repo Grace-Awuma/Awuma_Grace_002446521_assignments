@@ -17,13 +17,15 @@ import model.Product;
  */
 public class MainJFrame extends javax.swing.JFrame {
     private Business business;
-    private JPanel mainWorkArea;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
          initializeBusiness();
+         setSize(800,600);
+        setResizable(false);
         
         // Create and display home panel
         initializeHomePanel();
@@ -38,8 +40,28 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainWorkArea = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
+
+        mainWorkArea.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,7 +102,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void initializeBusiness() {
-         business = new Business("Grace's Coffee Shop");
+         business = new Business("Coffee Shop");
         
         // Add sample products (required by assignment - minimum 5)
         business.getProductCatalog().addProduct(101, "Espresso", "Coffee", 2.50, 50, 3);
@@ -111,7 +133,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void initializeHomePanel() {
- HomeJPanel homePanel = new HomeJPanel(mainWorkArea, business);
+        HomeJPanel homePanel = new HomeJPanel(mainWorkArea, business);
         mainWorkArea.add("Home", homePanel);
         
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
@@ -119,5 +141,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
 }

@@ -67,7 +67,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnView)
                 .addGap(30, 30, 30)
                 .addComponent(btnHistory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btnHome)
                 .addContainerGap())
         );
