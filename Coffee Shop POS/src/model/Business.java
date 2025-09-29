@@ -9,10 +9,41 @@ package model;
  * @author grace
  */
 public class Business {
+private ProductCatalog productCatalog;
+    private OrderDirectory orderDirectory;
+    private String name;
+    
+    public Business(String name) {
+        this.name = name;
+        this.productCatalog = new ProductCatalog();
+        this.orderDirectory = new OrderDirectory();
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+    
+    public ProductCatalog getProductCatalog() {
+        return productCatalog;
+        // TODO code application logic here
+    }
+
+    public void setProductCatalog(ProductCatalog productCatalog) {
+        this.productCatalog = productCatalog;
+    }
+
+    public OrderDirectory getOrderDirectory() {
+        return orderDirectory;
+    }
+
+    public void setOrderDirectory(OrderDirectory orderDirectory) {
+        this.orderDirectory = orderDirectory;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {    
+        this.name = name;
+    }
+
     public static void main(String[] args) {
         // TODO code application logic here
     }
