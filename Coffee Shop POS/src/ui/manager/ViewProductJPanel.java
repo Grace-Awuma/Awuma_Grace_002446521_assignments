@@ -44,9 +44,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         tblFeatures = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        btnAddFeature = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
-        btnRemoveFeature = new javax.swing.JButton();
         lblPrice = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
@@ -64,15 +62,20 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         tblFeatures.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Feature Name", "Value"
+                "Product ID", "Product Name", "Category", "Price", "Number", "Prep Time"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblFeatures.setEnabled(false);
         jScrollPane1.setViewportView(tblFeatures);
 
@@ -80,23 +83,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         lblName.setText("Product Name:");
 
-        btnAddFeature.setText("Add Feature");
-        btnAddFeature.setEnabled(false);
-        btnAddFeature.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFeatureActionPerformed(evt);
-            }
-        });
-
         txtName.setEditable(false);
-
-        btnRemoveFeature.setText("Remove Feature");
-        btnRemoveFeature.setEnabled(false);
-        btnRemoveFeature.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveFeatureActionPerformed(evt);
-            }
-        });
 
         lblPrice.setText("Price:");
 
@@ -128,10 +115,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddFeature)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemoveFeature)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(113, 113, 113)
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(btnSave))
@@ -174,9 +158,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnAddFeature)
-                    .addComponent(btnRemoveFeature))
+                    .addComponent(btnUpdate))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -195,21 +177,12 @@ public class ViewProductJPanel extends javax.swing.JPanel {
             txtPrice.setEditable(false);
             btnSave.setEnabled(false);
             tblFeatures.setEnabled(false);
-            btnAddFeature.setEnabled(false);
-            btnRemoveFeature.setEnabled(false);
+           
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid price", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnAddFeatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFeatureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddFeatureActionPerformed
-
-    private void btnRemoveFeatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFeatureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemoveFeatureActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -217,8 +190,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         txtPrice.setEditable(true);
         btnSave.setEnabled(true);
         tblFeatures.setEnabled(true);
-        btnAddFeature.setEnabled(true);
-        btnRemoveFeature.setEnabled(true);
+      
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
@@ -232,8 +204,6 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton1;
-    private javax.swing.JButton btnAddFeature;
-    private javax.swing.JButton btnRemoveFeature;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;

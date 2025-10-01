@@ -5,8 +5,8 @@
 package ui.customer;
 
 import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Business;
@@ -18,19 +18,24 @@ import model.Product;
  * @author grace
  */
 public class CustomerOrderJPanel extends javax.swing.JPanel {
-    private JPanel mainWorkArea;
+     private JPanel mainWorkArea;
     private Business business;
     private ArrayList<Product> selectedProducts;
     /**
-     * Creates new form AddCustomerOrderJPanel
+     * Creates new form OrderJPanel
      */
     public CustomerOrderJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
+        
         this.mainWorkArea = mainWorkArea;
         this.business = business;
         this.selectedProducts = new ArrayList<>();
         
           populateComboBoxes();
+          
+          SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+            txtOrderDate.setText(dateFormat.format(new java.util.Date()));
+            txtOrderDate.setEditable(false); 
     }
 
     /**
@@ -42,7 +47,25 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        WorkArea = new javax.swing.JPanel();
+        txtLastName = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
+        cmbOrderType = new javax.swing.JComboBox<>();
+        lblPaymentMethod = new javax.swing.JLabel();
+        cmbPaymentMethod = new javax.swing.JComboBox<>();
+        btnBack = new javax.swing.JButton();
+        lblCoffee = new javax.swing.JLabel();
+        chkboxLatte = new javax.swing.JCheckBox();
+        chkboxExpresso = new javax.swing.JCheckBox();
         lblAddCustomerOrder = new javax.swing.JLabel();
+        chkboxCappucinno = new javax.swing.JCheckBox();
+        btnAddCoffee = new javax.swing.JButton();
+        lblSandwichandWrap = new javax.swing.JLabel();
+        chkboxChickenWrap = new javax.swing.JCheckBox();
+        chkboxSandwich = new javax.swing.JCheckBox();
+        btnAddSandwich = new javax.swing.JButton();
+        lblCustomerDetails = new javax.swing.JLabel();
         lblMenu = new javax.swing.JLabel();
         lblLastName = new javax.swing.JLabel();
         lblFirstName = new javax.swing.JLabel();
@@ -51,63 +74,14 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         lblOrderType = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtContact = new javax.swing.JTextField();
-        txtQuantity = new javax.swing.JTextField();
         btnOrder = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        cmbOrderType = new javax.swing.JComboBox<>();
-        lblPaymentMethod = new javax.swing.JLabel();
-        cmbPaymentMethod = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        lblCoffee = new javax.swing.JLabel();
-        chkboxLatte = new javax.swing.JCheckBox();
-        chkboxExpresso = new javax.swing.JCheckBox();
-        chkboxCappucinno = new javax.swing.JCheckBox();
-        btnAddCoffee = new javax.swing.JButton();
-        lblSandwichandWrap = new javax.swing.JLabel();
-        chkboxChickenWrap = new javax.swing.JCheckBox();
-        chkboxSandwich = new javax.swing.JCheckBox();
-        btnAddSandwich = new javax.swing.JButton();
-        lblCustomerDetails = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(0, 204, 204));
-
-        lblAddCustomerOrder.setBackground(new java.awt.Color(255, 255, 255));
-        lblAddCustomerOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        lblAddCustomerOrder.setText("Customer Order");
-
-        lblMenu.setText("Menu");
-
-        lblLastName.setText("Last Name");
-
-        lblFirstName.setText("First Name");
-
-        lblContact.setText("Contact");
-
-        lblOrderDateandTime.setText("Order Date and Time");
-
-        lblOrderType.setText("Order Type");
-
-        lblQuantity.setText("Number/Quantity");
+        txtOrderDate = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContactActionPerformed(evt);
-            }
-        });
-
-        btnOrder.setText("Order ");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderActionPerformed(evt);
-            }
-        });
-
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
             }
         });
 
@@ -122,10 +96,10 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
 
         cmbPaymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("<<Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -139,6 +113,10 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                 chkboxExpressoActionPerformed(evt);
             }
         });
+
+        lblAddCustomerOrder.setBackground(new java.awt.Color(255, 255, 255));
+        lblAddCustomerOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblAddCustomerOrder.setText("Customer Order");
 
         chkboxCappucinno.setText("Cappuccino");
 
@@ -159,193 +137,202 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
 
         lblCustomerDetails.setText("Details");
 
+        lblMenu.setText("Menu");
+
+        lblLastName.setText("Last Name");
+
+        lblFirstName.setText("First Name");
+
+        lblContact.setText("Contact");
+
+        lblOrderDateandTime.setText("Order Date and Time");
+
+        lblOrderType.setText("Order Type");
+
+        lblQuantity.setText("Number/Quantity");
+
+        btnOrder.setText("Order ");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout WorkAreaLayout = new javax.swing.GroupLayout(WorkArea);
+        WorkArea.setLayout(WorkAreaLayout);
+        WorkAreaLayout.setHorizontalGroup(
+            WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnReset)
+                .addGap(26, 26, 26))
+            .addGroup(WorkAreaLayout.createSequentialGroup()
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(lblCustomerDetails))
+                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(WorkAreaLayout.createSequentialGroup()
+                                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFirstName)
+                                    .addComponent(lblLastName)
+                                    .addComponent(lblContact))
+                                .addGap(39, 39, 39)
+                                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(WorkAreaLayout.createSequentialGroup()
+                                .addComponent(lblOrderType)
+                                .addGap(42, 42, 42)
+                                .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(WorkAreaLayout.createSequentialGroup()
+                                .addComponent(lblPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(WorkAreaLayout.createSequentialGroup()
+                                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblOrderDateandTime)
+                                    .addComponent(lblQuantity))
+                                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(222, Short.MAX_VALUE))
+            .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                    .addGap(71, 71, 71)
+                    .addComponent(btnBack)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chkboxExpresso)
+                        .addComponent(chkboxLatte)
+                        .addComponent(lblAddCustomerOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(chkboxChickenWrap)
+                            .addComponent(chkboxCappucinno))
+                        .addGroup(WorkAreaLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(chkboxSandwich)))
+                    .addGap(126, 126, 126))
+                .addGroup(WorkAreaLayout.createSequentialGroup()
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(WorkAreaLayout.createSequentialGroup()
+                            .addGap(136, 136, 136)
+                            .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSandwichandWrap)
+                                .addComponent(lblCoffee)))
+                        .addGroup(WorkAreaLayout.createSequentialGroup()
+                            .addGap(257, 257, 257)
+                            .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(228, 228, 228))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                    .addGap(361, 361, 361)
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                            .addComponent(btnAddCoffee)
+                            .addGap(84, 84, 84))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                            .addComponent(btnAddSandwich)
+                            .addGap(65, 65, 65)))))
+        );
+        WorkAreaLayout.setVerticalGroup(
+            WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WorkAreaLayout.createSequentialGroup()
+                .addGap(304, 304, 304)
+                .addComponent(lblCustomerDetails)
+                .addGap(29, 29, 29)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContact)
+                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOrderDateandTime)
+                    .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOrderType)
+                    .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPaymentMethod)
+                    .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOrder)
+                    .addComponent(btnReset))
+                .addGap(80, 80, 80))
+            .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(WorkAreaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAddCustomerOrder)
+                        .addComponent(btnBack))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblMenu)
+                    .addGap(17, 17, 17)
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCoffee)
+                        .addComponent(chkboxLatte))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(chkboxExpresso)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(chkboxCappucinno)
+                    .addGap(9, 9, 9)
+                    .addComponent(btnAddCoffee)
+                    .addGap(23, 23, 23)
+                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblSandwichandWrap)
+                        .addComponent(chkboxChickenWrap))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(chkboxSandwich)
+                    .addGap(27, 27, 27)
+                    .addComponent(btnAddSandwich)
+                    .addContainerGap(463, Short.MAX_VALUE)))
+        );
+
+        jScrollPane1.setViewportView(WorkArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkboxExpresso)
-                    .addComponent(chkboxLatte)
-                    .addComponent(lblAddCustomerOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(chkboxChickenWrap)
-                        .addComponent(chkboxCappucinno))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(chkboxSandwich)))
-                .addGap(163, 163, 163))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSandwichandWrap)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCoffee)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAddCoffee)
-                        .addGap(121, 121, 121))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAddSandwich)
-                        .addGap(102, 102, 102))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFirstName)
-                                    .addComponent(lblLastName))
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtLastName)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblOrderDateandTime)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblContact)
-                                        .addComponent(lblOrderType)
-                                        .addComponent(lblPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblQuantity))
-                                    .addGap(39, 39, 39)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(205, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(lblCustomerDetails)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnReset)
-                .addGap(22, 22, 22))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddCustomerOrder)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMenu)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCoffee)
-                    .addComponent(chkboxLatte))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkboxExpresso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkboxCappucinno)
-                .addGap(9, 9, 9)
-                .addComponent(btnAddCoffee)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSandwichandWrap)
-                    .addComponent(chkboxChickenWrap))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkboxSandwich)
-                .addGap(27, 27, 27)
-                .addComponent(btnAddSandwich)
-                .addGap(39, 39, 39)
-                .addComponent(lblCustomerDetails)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLastName)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContact)
-                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblOrderDateandTime)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrderType)
-                    .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPaymentMethod)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblQuantity))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOrder)
-                    .addComponent(btnReset))
-                .addGap(135, 135, 135))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        // TODO add your handling code here:
-        selectedProducts.clear();
-    
-    // Your existing checkbox logic
-    if (chkboxLatte.isSelected()) {
-        Product latte = findProductByName("Latte");
-        if (latte != null) selectedProducts.add(latte);
-    }
-    
-    if (chkboxExpresso.isSelected()) {
-        Product espresso = findProductByName("Espresso");
-        if (espresso != null) selectedProducts.add(espresso);
-    }
-    
-    if (chkboxCappucinno.isSelected()) {
-        Product cappuccino = findProductByName("Cappuccino");
-        if (cappuccino != null) selectedProducts.add(cappuccino);
-    }
-    
-    if (chkboxChickenWrap.isSelected()) {
-        Product chickenWrap = findProductByName("Chicken Wrap");
-        if (chickenWrap != null) selectedProducts.add(chickenWrap);
-    }
-    
-    if (chkboxSandwich.isSelected()) {
-        Product croissant = findProductByName("Croissant");
-        if (croissant != null) selectedProducts.add(croissant);
-    }
-    
-    // Call validation method
-    if (validateOrder()) {
-        createOrder();
-    }
-    }
-    
-    private Product findProductByName(String productName) {
-        for (Product product : business.getProductCatalog().getProductList()) {
-            if (product.getProductName().equalsIgnoreCase(productName)) {
-                return product;
-            }
-        }
-        return null;
-    }//GEN-LAST:event_btnOrderActionPerformed
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
         // TODO add your handling code here:
@@ -355,6 +342,11 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbOrderTypeActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        backAction();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void chkboxExpressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkboxExpressoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkboxExpressoActionPerformed
@@ -363,34 +355,76 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_chkboxSandwichActionPerformed
 
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        selectedProducts.clear();
+
+        // Your existing checkbox logic
+        if (chkboxLatte.isSelected()) {
+            Product latte = findProductByName("Latte");
+            if (latte != null) selectedProducts.add(latte);
+        }
+
+        if (chkboxExpresso.isSelected()) {
+            Product espresso = findProductByName("Espresso");
+            if (espresso != null) selectedProducts.add(espresso);
+        }
+
+        if (chkboxCappucinno.isSelected()) {
+            Product cappuccino = findProductByName("Cappuccino");
+            if (cappuccino != null) selectedProducts.add(cappuccino);
+        }
+
+        if (chkboxChickenWrap.isSelected()) {
+            Product chickenWrap = findProductByName("Chicken Wrap");
+            if (chickenWrap != null) selectedProducts.add(chickenWrap);
+        }
+
+        if (chkboxSandwich.isSelected()) {
+            Product croissant = findProductByName("Croissant");
+            if (croissant != null) selectedProducts.add(croissant);
+        }
+
+        // Call validation method
+        if (validateOrder()) {
+            createOrder();
+        }
+        }
+
+        private Product findProductByName(String productName) {
+            for (Product product : business.getProductCatalog().getProductList()) {
+                if (product.getProductName().equalsIgnoreCase(productName)) {
+                    return product;
+                }
+            }
+            return null;
+    }//GEN-LAST:event_btnOrderActionPerformed
+
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-         txtFirstName.setText("");
+        txtFirstName.setText("");
         txtLastName.setText("");
         txtContact.setText("");
         txtQuantity.setText("");
-        
+
         // Uncheck all checkboxes
         chkboxLatte.setSelected(false);
         chkboxExpresso.setSelected(false);
         chkboxCappucinno.setSelected(false);
         chkboxChickenWrap.setSelected(false);
         chkboxSandwich.setSelected(false);
-        
+
         // Reset combo boxes to first item
         cmbOrderType.setSelectedIndex(0);
         cmbPaymentMethod.setSelectedIndex(0);
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        backAction();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel WorkArea;
     private javax.swing.JButton btnAddCoffee;
     private javax.swing.JButton btnAddSandwich;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox chkboxCappucinno;
@@ -400,7 +434,7 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox chkboxSandwich;
     private javax.swing.JComboBox<String> cmbOrderType;
     private javax.swing.JComboBox<String> cmbPaymentMethod;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddCustomerOrder;
     private javax.swing.JLabel lblCoffee;
     private javax.swing.JLabel lblContact;
@@ -416,11 +450,12 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtOrderDate;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 
     private void populateComboBoxes() {
-        cmbOrderType.removeAllItems();
+cmbOrderType.removeAllItems();
         cmbOrderType.addItem("Dine-in");
         cmbOrderType.addItem("Takeout");
         cmbOrderType.addItem("Pickup");
@@ -429,45 +464,10 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         cmbPaymentMethod.removeAllItems();
         cmbPaymentMethod.addItem("Cash");
         cmbPaymentMethod.addItem("Card");
-        cmbPaymentMethod.addItem("Mobile");
-    }
-    
-
-    private void backAction() {
-         mainWorkArea.remove(this);
-        CardLayout layout = (CardLayout)mainWorkArea.getLayout();
-        layout.previous(mainWorkArea);    }
-
-    private boolean validateOrder() {
-if (txtFirstName.getText().trim().isEmpty() || 
-        txtLastName.getText().trim().isEmpty() || 
-        txtContact.getText().trim().isEmpty() || 
-        txtQuantity.getText().trim().isEmpty()) {
-        
-        JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-    
-    try {
-        int quantity = Integer.parseInt(txtQuantity.getText().trim());
-        if (quantity <= 0) {
-            JOptionPane.showMessageDialog(this, "Quantity must be positive", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Invalid quantity", "Error", JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-    
-    if (selectedProducts.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please select at least one product", "Error", JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-    
-    return true;    }
+        cmbPaymentMethod.addItem("Mobile");    }
 
     private void createOrder() {
-   try {
+try {
         // Create customer with auto-ID
         Customer customer = business.getOrderDirectory().addCustomer(-1,
             txtFirstName.getText().trim(),
@@ -496,5 +496,39 @@ if (txtFirstName.getText().trim().isEmpty() ||
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error creating order: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+        }
+
+    private boolean validateOrder() {
+if (txtFirstName.getText().trim().isEmpty() || 
+        txtLastName.getText().trim().isEmpty() || 
+        txtContact.getText().trim().isEmpty() || 
+        txtQuantity.getText().trim().isEmpty()) {
+        
+        JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
     }
+    
+    try {
+        int quantity = Integer.parseInt(txtQuantity.getText().trim());
+        if (quantity <= 0) {
+            JOptionPane.showMessageDialog(this, "Quantity must be positive", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Invalid quantity", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    
+    if (selectedProducts.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please select at least one product", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    
+    return true;
+    }
+
+    private void backAction() {
+        mainWorkArea.remove(this);
+        CardLayout layout = (CardLayout)mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);    }
 }

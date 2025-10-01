@@ -108,8 +108,9 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnSearchCustomer)
                 .addGap(26, 26, 26)
                 .addComponent(btnViewProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(btnHome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnHome)
+                .addGap(18, 18, 18))
         );
         menuBarLayout.setVerticalGroup(
             menuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

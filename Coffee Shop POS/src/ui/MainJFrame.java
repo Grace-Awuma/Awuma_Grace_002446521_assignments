@@ -6,6 +6,7 @@ package ui;
 
 import java.awt.CardLayout;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.Business;
 import model.Customer;
@@ -24,11 +25,12 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
          initializeBusiness();
-         setSize(800,600);
-        setResizable(false);
-        
-        // Create and display home panel
+      
         initializeHomePanel();
+        
+        pack(); // Automatically sizes window to fit content
+    setLocationRelativeTo(null); // Centers the window
+    setResizable(true);
     }
 
     /**
@@ -53,14 +55,14 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
 
         pack();
