@@ -13,15 +13,26 @@ import java.util.ArrayList;
 public class ProductCatalog {
     
     private ArrayList<Product> productList;
+    private int nextProductId;
     
     public ProductCatalog() {
         this.productList = new ArrayList<>();
+        this.nextProductId = 101;
+        
     }
     
     public Product addProduct(int productId, String productName, String category, double price, int number, int preparationTime) {
+        if (productId == -1) {  
+            productId = nextProductId++;  // Auto-generate and increment
+        }
         Product product = new Product(productId, productName, category, price, number, preparationTime);
         productList.add(product);
         return product;
+    }
+    
+     // ADD THIS - overloaded method without productId parameter
+    public Product addProduct(String productName, String category, double price, int number, int preparationTime) {
+        return addProduct(-1, productName, category, price, number, preparationTime);
     }
     
     public Product searchProduct(int productId) {
@@ -40,4 +51,5 @@ public class ProductCatalog {
     public void removeProduct(Product product) {
         productList.remove(product);
     }
+    
 }

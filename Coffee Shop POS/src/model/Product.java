@@ -76,8 +76,8 @@ public class Product {
     }
    @Override
     public String toString() {
-        return productName + " (" + category + ") - $" + price;
-    } 
+    return productName + " (" + category + ") - $" + price;
+}
 
     public void setName(String trim) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

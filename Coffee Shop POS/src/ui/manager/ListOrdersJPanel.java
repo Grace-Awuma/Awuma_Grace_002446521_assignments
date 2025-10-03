@@ -211,7 +211,7 @@ String selectedStatus = (String) cmbSetStatus.getSelectedItem();
     
     for (Order order : business.getOrderDirectory().getOrderList()) {
         // Only add orders that match the selected status
-        if (order.getOrderStatus().equalsIgnoreCase(selectedStatus)) {
+        if (selectedStatus.equals("All") || order.getOrderStatus().equalsIgnoreCase(selectedStatus)) {
             Object[] row = new Object[5];
             row[0] = order.getCustomer().getCustomerId();
             row[1] = order.getOrderId();

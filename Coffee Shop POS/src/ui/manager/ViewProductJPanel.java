@@ -7,6 +7,7 @@ package ui.manager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.Business;
 import model.Product;
 
@@ -39,7 +40,6 @@ public class ViewProductJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSave = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFeatures = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
@@ -47,22 +47,11 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         lblPrice = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 153));
-
-        btnSave.setBackground(new java.awt.Color(153, 153, 153));
-        btnSave.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        btnSave.setText("Save");
-        btnSave.setEnabled(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
 
         tblFeatures.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,15 +84,6 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         txtPrice.setEditable(false);
 
-        btnUpdate.setBackground(new java.awt.Color(153, 153, 153));
-        btnUpdate.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        btnUpdate.setText("Update Product");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
         backButton1.setBackground(new java.awt.Color(153, 153, 153));
         backButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         backButton1.setText("<< Back");
@@ -124,11 +104,6 @@ public class ViewProductJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSave))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(backButton1)
@@ -165,43 +140,9 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                     .addComponent(lblPrice))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        product.setName(txtName.getText().trim());
-        
-        try {
-            double price = Double.parseDouble(txtPrice.getText().trim());
-            product.setPrice(price);
-            
-            JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            
-            txtName.setEditable(false);
-            txtPrice.setEditable(false);
-            btnSave.setEnabled(false);
-            tblFeatures.setEnabled(false);
-           
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid price", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        txtName.setEditable(true);
-        txtPrice.setEditable(true);
-        btnSave.setEnabled(true);
-        tblFeatures.setEnabled(true);
-      
-    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
         // TODO add your handling code here:
@@ -214,8 +155,6 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton1;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblName;
@@ -230,5 +169,22 @@ public class ViewProductJPanel extends javax.swing.JPanel {
     private void displayProductDetails() {
         txtId.setText(String.valueOf(product.getProductId()));
         txtName.setText(product.getProductName());
-        txtPrice.setText(String.valueOf(product.getPrice()));    }
+        txtPrice.setText(String.valueOf(product.getPrice())); 
+         refreshTable();
+    }
+
+    private void refreshTable() {
+    DefaultTableModel model = (DefaultTableModel) tblFeatures.getModel();
+    model.setRowCount(0);
+    
+    Object[] row = new Object[6];
+    row[0] = product.getProductId();
+    row[1] = product.getProductName();
+    row[2] = product.getCategory();
+    row[3] = "$" + product.getPrice();
+    row[4] = product.getNumber();
+    row[5] = product.getPreparationTime() + " min";
+    model.addRow(row);    }
+    
+    
 }

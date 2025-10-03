@@ -5,8 +5,10 @@
 package ui.manager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Business;
+import model.Product;
 
 /**
  *
@@ -171,6 +173,30 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProductActionPerformed
         // TODO add your handling code here:
+        if (business.getProductCatalog().getProductList().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No products available to view", "Info", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+    
+    // Create array of product names for selection
+    Product[] products = business.getProductCatalog().getProductList().toArray(new Product[0]);
+    
+    Product selectedProduct = (Product) JOptionPane.showInputDialog(
+        this,
+        "Select a product to view:",
+        "View Product",
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        products,
+        products[0]
+    );
+    
+    if (selectedProduct != null) {
+        ViewProductJPanel panel = new ViewProductJPanel(workArea, business, selectedProduct);
+        workArea.add("ViewProduct", panel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+    }
     }//GEN-LAST:event_btnViewProductActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed

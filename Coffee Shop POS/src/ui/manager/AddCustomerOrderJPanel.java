@@ -287,11 +287,9 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
 
     private void btnAddCustomerandOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerandOrderActionPerformed
         // TODO add your handling code here:
-        if (txtCustomerID.getText().trim().isEmpty() ||
-            txtFirstName.getText().trim().isEmpty() ||
+        if (txtFirstName.getText().trim().isEmpty() ||
             txtLastName.getText().trim().isEmpty() ||
             txtContact.getText().trim().isEmpty() ||
-            txtOrderID.getText().trim().isEmpty() ||
             txtQuantity.getText().trim().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
@@ -313,25 +311,26 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
                 return;
             }
 
-            Customer customer = business.getOrderDirectory().addCustomer(
-                customerId,
-                txtFirstName.getText().trim(),
-                txtLastName.getText().trim(),
-                txtContact.getText().trim()
-            );
+         // Remove the ID parsing completely, pass -1 for auto-generation
+        Customer customer = business.getOrderDirectory().addCustomer(
+            -1,  // Auto-generate customer ID
+            txtFirstName.getText().trim(),
+            txtLastName.getText().trim(),
+            txtContact.getText().trim() 
+);
 
-            Product selectedProduct = (Product) cmbProductOpted.getSelectedItem();
+Product selectedProduct = (Product) cmbProductOpted.getSelectedItem();
 
-            Order order = business.getOrderDirectory().addOrder(
-                orderId,
-                new Date(),
-                (String) cmbOrderType.getSelectedItem(),
-                (String) cmbPaymentMethod.getSelectedItem(),
-                (String) cmbOrderStatus.getSelectedItem(),
-                selectedProduct,
-                customer,
-                quantity
-            );
+Order order = business.getOrderDirectory().addOrder(
+    -1,  // Auto-generate order ID
+    new Date(),
+    (String) cmbOrderType.getSelectedItem(),
+    (String) cmbPaymentMethod.getSelectedItem(),
+    (String) cmbOrderStatus.getSelectedItem(),
+    selectedProduct,
+    customer,
+    quantity
+);  
 
             JOptionPane.showMessageDialog(this, "Customer and Order added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             resetForm();

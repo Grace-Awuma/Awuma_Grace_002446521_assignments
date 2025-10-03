@@ -273,33 +273,32 @@ public class ManageProductJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if (txtProductID.getText().trim().isEmpty() ||
-            txtProductName.getText().trim().isEmpty() ||
-            txtPrice.getText().trim().isEmpty() ||
-            txtNumber.getText().trim().isEmpty() ||
-            txtPrepTime.getText().trim().isEmpty()) {
+       if (txtProductName.getText().trim().isEmpty() ||
+        txtPrice.getText().trim().isEmpty() ||
+        txtNumber.getText().trim().isEmpty() ||
+        txtPrepTime.getText().trim().isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        try {
-            int productId = Integer.parseInt(txtProductID.getText().trim());
-            String productName = txtProductName.getText().trim();
-            String category = (String) cmbCategory.getSelectedItem();
-            double price = Double.parseDouble(txtPrice.getText().trim());
-            int number = Integer.parseInt(txtNumber.getText().trim());
-            int prepTime = Integer.parseInt(txtPrepTime.getText().trim());
+    try {
+        String productName = txtProductName.getText().trim();
+        String category = (String) cmbCategory.getSelectedItem();
+        double price = Double.parseDouble(txtPrice.getText().trim());
+        int number = Integer.parseInt(txtNumber.getText().trim());
+        int prepTime = Integer.parseInt(txtPrepTime.getText().trim());
 
-            business.getProductCatalog().addProduct(productId, productName, category, price, number, prepTime);
+        // CHANGED: No longer passing productId
+        business.getProductCatalog().addProduct(productName, category, price, number, prepTime);
 
-            JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            clearForm();
-            refreshTable();
+        JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        clearForm();
+        refreshTable();
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter valid numbers for ID, Price, Number and Prep Time", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnAddActionPerformed
 
 

@@ -126,40 +126,57 @@ public class HomeJPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String selectedRole = (String) cmbRoles.getSelectedItem();
-        String userName = txtUserName.getText().trim();
+       String selectedRole = (String) cmbRoles.getSelectedItem();
+    String userName = txtUserName.getText().trim();
 
-        // Validation
-        if (selectedRole == null) {
-            JOptionPane.showMessageDialog(this, "Please select a role", "Login Error", JOptionPane.WARNING_MESSAGE);
-            return;
+    // Validation: Username is required
+    if (userName.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Username is required", 
+            "Validation Error", 
+            JOptionPane.ERROR_MESSAGE);
+        txtUserName.requestFocus();
+        return;
+    }
+    
+    // Validation: Role selection required
+    if (selectedRole == null) {
+        JOptionPane.showMessageDialog(this, 
+            "Please select a role", 
+            "Validation Error", 
+            JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Navigate based on role
+    try {
+        if (selectedRole.equals("Manager")) {
+            ManagerWorkAreaJPanel managerPanel = new ManagerWorkAreaJPanel(mainWorkArea, business);
+            mainWorkArea.add("ManagerWorkArea", managerPanel);
+            CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+            layout.show(mainWorkArea, "ManagerWorkArea");
+            JOptionPane.showMessageDialog(this, 
+                "Welcome Manager " + userName + "!", 
+                "Login Successful", 
+                JOptionPane.INFORMATION_MESSAGE);
+                
+        } else if (selectedRole.equals("Customer")) {
+            CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel(mainWorkArea, business);
+            mainWorkArea.add("CustomerWorkArea", customerPanel);
+            CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+            layout.show(mainWorkArea, "CustomerWorkArea");
+            JOptionPane.showMessageDialog(this, 
+                "Welcome Customer " + userName + "!", 
+                "Login Successful", 
+                JOptionPane.INFORMATION_MESSAGE);
         }
-
-
-        // Navigate based on role
-        try {
-            if (selectedRole.equals("Manager")) {
-                // Navigate to Manager Work Area
-                ManagerWorkAreaJPanel managerPanel = new ManagerWorkAreaJPanel(mainWorkArea, business);
-                mainWorkArea.add("ManagerWorkArea", managerPanel);
-                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                layout.show(mainWorkArea, "ManagerWorkArea");
-            } else if (selectedRole.equals("Customer")) {
-                // Navigate to Customer Work Area
-                CustomerWorkAreaJPanel customerPanel = new CustomerWorkAreaJPanel(mainWorkArea, business);
-                mainWorkArea.add("CustomerWorkArea", customerPanel);
-                CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                layout.show(mainWorkArea, "CustomerWorkArea");
-            }
-
-            //Welcome Msg
-            if (!userName.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Welcome " + userName + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Login failed: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Login failed: " + e.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
