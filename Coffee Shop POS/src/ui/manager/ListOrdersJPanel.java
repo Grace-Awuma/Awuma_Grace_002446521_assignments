@@ -65,11 +65,11 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Customer ID", "Order ID", "Status", "Items", "Total"
+                "Customer ID", "Order ID", "Status", "Product Name", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
