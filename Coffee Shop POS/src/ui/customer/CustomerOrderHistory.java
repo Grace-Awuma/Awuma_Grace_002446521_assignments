@@ -50,8 +50,13 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 153, 153));
+
+        lblPurchaseHistory.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         lblPurchaseHistory.setText("Purchase History");
 
+        btnViewOrder.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnViewOrder.setText("View Order");
         btnViewOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +65,7 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
             }
         });
 
+        lblHistory.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         lblHistory.setText("History Details");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,6 +86,8 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable2);
 
+        btnDelete.setBackground(new java.awt.Color(0, 153, 153));
+        btnDelete.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnDelete.setText("Delete Order");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +95,8 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 153));
+        btnBack.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +113,7 @@ public class CustomerOrderHistory extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(165, 165, 165)
                 .addComponent(lblPurchaseHistory)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(49, 49, 49)

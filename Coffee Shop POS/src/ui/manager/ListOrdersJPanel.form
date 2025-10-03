@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="cc" green="cc" red="ff" type="rgb"/>
+      <Color blue="99" green="99" red="0" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -29,7 +29,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmbSetStatus" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnListOrders" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnfilterOrders" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnListOrders" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnfilterOrders" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbSetStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -69,10 +69,13 @@
         <Property name="text" type="java.lang.String" value="Set Status"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnListOrders">
+    <Component class="javax.swing.JButton" name="btnfilterOrders">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Orders "/>
+        <Property name="text" type="java.lang.String" value="Filter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnfilterOrdersActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
 
@@ -142,6 +145,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDeleteOrder">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete Order"/>
       </Properties>
       <Events>

@@ -36,7 +36,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="splitPane" alignment="0" max="32767" attributes="0"/>
+              <Component id="splitPane" alignment="0" pref="502" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -49,6 +49,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="menuBar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="99" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                   <JSplitPaneConstraints position="top"/>
@@ -71,7 +76,7 @@
                           <Component id="btnSearchCustomer" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="btnViewProduct" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnHome" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
@@ -103,6 +108,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAddCustomer">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Add Customer + Order"/>
                   </Properties>
                   <Events>
@@ -111,6 +122,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnListOrders">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="List Orders"/>
                   </Properties>
                   <Events>
@@ -119,6 +136,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnManageProduct">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Manage Products"/>
                   </Properties>
                   <Events>
@@ -127,6 +150,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSearchCustomer">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Search Customers"/>
                   </Properties>
                   <Events>
@@ -135,6 +164,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnViewProduct">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="View Product"/>
                   </Properties>
                   <Events>
@@ -143,6 +178,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnHome">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Home"/>
                   </Properties>
                   <Events>
@@ -152,6 +190,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="workArea">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="0" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                   <JSplitPaneConstraints position="right"/>

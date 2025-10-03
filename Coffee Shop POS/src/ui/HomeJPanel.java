@@ -44,6 +44,8 @@ public class HomeJPanel extends javax.swing.JPanel {
         lblCoffeeShop = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(153, 153, 153));
+
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUserName.setText("UserName ");
 
@@ -56,6 +58,7 @@ public class HomeJPanel extends javax.swing.JPanel {
         lblRole.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblRole.setText("Choose Role:");
 
+        btnLogin.setBackground(new java.awt.Color(0, 153, 153));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +66,7 @@ public class HomeJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblCoffeeShop.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         lblCoffeeShop.setText("Welcome to Coffee Shop POS");
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +104,7 @@ public class HomeJPanel extends javax.swing.JPanel {
                 .addComponent(lblCoffeeShop)
                 .addGap(145, 145, 145)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(170, 170, 170)

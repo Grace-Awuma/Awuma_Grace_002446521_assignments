@@ -46,8 +46,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         splitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        customerMenuBar.setBackground(new java.awt.Color(153, 153, 153));
+
         lblWelcome.setText("<Welcome Msg>");
 
+        btnOrder.setBackground(new java.awt.Color(0, 153, 153));
+        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnOrder.setText("Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +59,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnView.setBackground(new java.awt.Color(0, 153, 153));
+        btnView.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +68,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHistory.setBackground(new java.awt.Color(0, 153, 153));
+        btnHistory.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnHistory.setText("History");
         btnHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +77,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHome.setBackground(new java.awt.Color(0, 255, 255));
+        btnHome.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +99,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnView)
                 .addGap(30, 30, 30)
                 .addComponent(btnHistory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btnHome)
                 .addContainerGap())
         );
@@ -108,6 +118,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         splitPanel.setTopComponent(customerMenuBar);
 
+        WorkArea.setBackground(new java.awt.Color(0, 153, 153));
         WorkArea.setLayout(new java.awt.CardLayout());
         splitPanel.setRightComponent(WorkArea);
 
@@ -130,10 +141,10 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        ViewCustomerDetailsJPanel historyPanel = new ViewCustomerDetailsJPanel(mainWorkArea, business);
-        mainWorkArea.add("CustomerHistory", historyPanel);
+        ViewCustomerDetailsJPanel panel = new ViewCustomerDetailsJPanel(mainWorkArea, business);
+            mainWorkArea.add("ViewCustomerDetailsJPanel", panel);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.show(mainWorkArea, "CustomerHistory");
+        layout.next(mainWorkArea);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed

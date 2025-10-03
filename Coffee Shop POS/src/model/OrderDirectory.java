@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class OrderDirectory {
     private ArrayList<Order> orderList;
     private ArrayList<Customer> customerList;
+    private int nextOrderId; 
     
     public OrderDirectory() {
         this.orderList = new ArrayList<>();
         this.customerList = new ArrayList<>();
+         this.nextOrderId = 2001;
     }
     
     public Customer addCustomer(int customerId, String firstName, String lastName, String contact) {
@@ -28,13 +30,15 @@ public class OrderDirectory {
     return customer;
 }
     
-    public Order addOrder(int orderId, java.util.Date orderDateTime, String orderType, String paymentMethod, 
+     public Order addOrder(int orderId, java.util.Date orderDateTime, String orderType, String paymentMethod, 
                          String orderStatus, Product product, Customer customer, int quantity) {
+        if (orderId == -1) {  // ADD THIS CHECK
+            orderId = nextOrderId++;  // Auto-generate and increment
+        }
         Order order = new Order(orderId, orderDateTime, orderType, paymentMethod, orderStatus, product, customer, quantity);
         orderList.add(order);
         return order;
-        
-    }
+     }
     
     public Customer searchCustomerById(int customerId) {
         for (Customer customer : customerList) {

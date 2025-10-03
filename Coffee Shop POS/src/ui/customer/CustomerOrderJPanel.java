@@ -60,11 +60,9 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         chkboxExpresso = new javax.swing.JCheckBox();
         lblAddCustomerOrder = new javax.swing.JLabel();
         chkboxCappucinno = new javax.swing.JCheckBox();
-        btnAddCoffee = new javax.swing.JButton();
         lblSandwichandWrap = new javax.swing.JLabel();
         chkboxChickenWrap = new javax.swing.JCheckBox();
         chkboxSandwich = new javax.swing.JCheckBox();
-        btnAddSandwich = new javax.swing.JButton();
         lblCustomerDetails = new javax.swing.JLabel();
         lblMenu = new javax.swing.JLabel();
         lblLastName = new javax.swing.JLabel();
@@ -78,6 +76,9 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         btnReset = new javax.swing.JButton();
         txtOrderDate = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
+
+        WorkArea.setBackground(new java.awt.Color(153, 153, 153));
+        WorkArea.setPreferredSize(new java.awt.Dimension(600, 900));
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +97,8 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
 
         cmbPaymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 153));
+        btnBack.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +106,8 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblCoffee.setBackground(new java.awt.Color(0, 153, 153));
+        lblCoffee.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         lblCoffee.setText("Coffee");
 
         chkboxLatte.setText("Latte");
@@ -115,13 +120,12 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         });
 
         lblAddCustomerOrder.setBackground(new java.awt.Color(255, 255, 255));
-        lblAddCustomerOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblAddCustomerOrder.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         lblAddCustomerOrder.setText("Customer Order");
 
         chkboxCappucinno.setText("Cappuccino");
 
-        btnAddCoffee.setText("Add Item");
-
+        lblSandwichandWrap.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         lblSandwichandWrap.setText("Sandwich & Wraps");
 
         chkboxChickenWrap.setText("Chicken Wrap");
@@ -133,8 +137,7 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAddSandwich.setText("Add Item");
-
+        lblCustomerDetails.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         lblCustomerDetails.setText("Details");
 
         lblMenu.setText("Menu");
@@ -151,6 +154,8 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
 
         lblQuantity.setText("Number/Quantity");
 
+        btnOrder.setBackground(new java.awt.Color(0, 153, 153));
+        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnOrder.setText("Order ");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +163,8 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnReset.setBackground(new java.awt.Color(0, 153, 153));
+        btnReset.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,12 +176,6 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
         WorkArea.setLayout(WorkAreaLayout);
         WorkAreaLayout.setHorizontalGroup(
             WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnReset)
-                .addGap(26, 26, 26))
             .addGroup(WorkAreaLayout.createSequentialGroup()
                 .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(WorkAreaLayout.createSequentialGroup()
@@ -212,16 +213,25 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                                     .addGroup(WorkAreaLayout.createSequentialGroup()
                                         .addGap(14, 14, 14)
                                         .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(btnReset)
+                .addGap(43, 43, 43))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAddCustomerOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(194, 194, 194))
             .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                    .addGap(71, 71, 71)
-                    .addComponent(btnBack)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(347, Short.MAX_VALUE)
                     .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(chkboxExpresso)
                         .addComponent(chkboxLatte)
-                        .addComponent(lblAddCustomerOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(chkboxChickenWrap)
                             .addComponent(chkboxCappucinno))
@@ -239,21 +249,19 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                         .addGroup(WorkAreaLayout.createSequentialGroup()
                             .addGap(257, 257, 257)
                             .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(228, 228, 228))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                    .addGap(361, 361, 361)
-                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                            .addComponent(btnAddCoffee)
-                            .addGap(84, 84, 84))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                            .addComponent(btnAddSandwich)
-                            .addGap(65, 65, 65)))))
+                    .addGap(228, 228, 228)))
         );
         WorkAreaLayout.setVerticalGroup(
             WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WorkAreaLayout.createSequentialGroup()
-                .addGap(304, 304, 304)
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAddCustomerOrder))
+                    .addGroup(WorkAreaLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(btnBack)))
+                .addGap(267, 267, 267)
                 .addComponent(lblCustomerDetails)
                 .addGap(29, 29, 29)
                 .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,9 +276,9 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                     .addComponent(lblContact)
                     .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrderDateandTime)
-                    .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrderDateandTime))
                 .addGap(3, 3, 3)
                 .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblQuantity)
@@ -283,18 +291,14 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                 .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPaymentMethod)
                     .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOrder)
                     .addComponent(btnReset))
-                .addGap(80, 80, 80))
+                .addContainerGap(280, Short.MAX_VALUE))
             .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(WorkAreaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblAddCustomerOrder)
-                        .addComponent(btnBack))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(41, 41, 41)
                     .addComponent(lblMenu)
                     .addGap(17, 17, 17)
                     .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -304,17 +308,13 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
                     .addComponent(chkboxExpresso)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(chkboxCappucinno)
-                    .addGap(9, 9, 9)
-                    .addComponent(btnAddCoffee)
-                    .addGap(23, 23, 23)
+                    .addGap(55, 55, 55)
                     .addGroup(WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblSandwichandWrap)
                         .addComponent(chkboxChickenWrap))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(chkboxSandwich)
-                    .addGap(27, 27, 27)
-                    .addComponent(btnAddSandwich)
-                    .addContainerGap(463, Short.MAX_VALUE)))
+                    .addContainerGap(653, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(WorkArea);
@@ -329,7 +329,7 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -422,8 +422,6 @@ public class CustomerOrderJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel WorkArea;
-    private javax.swing.JButton btnAddCoffee;
-    private javax.swing.JButton btnAddSandwich;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnReset;

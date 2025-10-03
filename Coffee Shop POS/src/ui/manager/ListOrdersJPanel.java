@@ -43,17 +43,22 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnListOrders = new javax.swing.JButton();
+        btnfilterOrders = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         cmbSetStatus = new javax.swing.JComboBox<>();
         btnDeleteOrder = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel1.setText("Set Status");
 
-        btnListOrders.setText("Orders ");
+        btnfilterOrders.setText("Filter");
+        btnfilterOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfilterOrdersActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,6 +80,7 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
 
         cmbSetStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnDeleteOrder.setBackground(new java.awt.Color(153, 153, 153));
         btnDeleteOrder.setText("Delete Order");
         btnDeleteOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +100,7 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbSetStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(btnListOrders))
+                        .addComponent(btnfilterOrders))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -110,7 +116,7 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(btnListOrders)
+                    .addComponent(btnfilterOrders)
                     .addComponent(cmbSetStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,10 +146,15 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteOrderActionPerformed
 
+    private void btnfilterOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfilterOrdersActionPerformed
+        // TODO add your handling code here:
+         filterOrdersByStatus();
+    }//GEN-LAST:event_btnfilterOrdersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteOrder;
-    private javax.swing.JButton btnListOrders;
+    private javax.swing.JButton btnfilterOrders;
     private javax.swing.JComboBox<String> cmbSetStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -152,6 +163,7 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
 
     private void populateStatusSpinner() {
         cmbSetStatus.removeAllItems();
+        cmbSetStatus.addItem("All");
         cmbSetStatus.addItem("Pending");
         cmbSetStatus.addItem("Preparing");
         cmbSetStatus.addItem("Ready");
@@ -188,4 +200,26 @@ public class ListOrdersJPanel extends javax.swing.JPanel {
                 }
             }
         });    }
+
+    private void filterOrdersByStatus() {
+String selectedStatus = (String) cmbSetStatus.getSelectedItem();
+    
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    
+    for (Order order : business.getOrderDirectory().getOrderList()) {
+        // Only add orders that match the selected status
+        if (order.getOrderStatus().equalsIgnoreCase(selectedStatus)) {
+            Object[] row = new Object[5];
+            row[0] = order.getCustomer().getCustomerId();
+            row[1] = order.getOrderId();
+            row[2] = order.getOrderStatus();
+            row[3] = order.getProduct().getProductName();
+            row[4] = "$" + order.getTotalPrice();
+            model.addRow(row);
+        }
+    }
+    }
 }

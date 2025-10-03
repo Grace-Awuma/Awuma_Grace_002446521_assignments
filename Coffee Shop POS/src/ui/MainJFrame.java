@@ -27,10 +27,6 @@ public class MainJFrame extends javax.swing.JFrame {
          initializeBusiness();
       
         initializeHomePanel();
-        
-        pack(); // Automatically sizes window to fit content
-    setLocationRelativeTo(null); // Centers the window
-    setResizable(true);
     }
 
     /**

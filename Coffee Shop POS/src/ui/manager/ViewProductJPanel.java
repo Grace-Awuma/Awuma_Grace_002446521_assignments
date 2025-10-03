@@ -52,6 +52,10 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         txtId = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 153, 153));
+
+        btnSave.setBackground(new java.awt.Color(153, 153, 153));
+        btnSave.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnSave.setText("Save");
         btnSave.setEnabled(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +83,8 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         tblFeatures.setEnabled(false);
         jScrollPane1.setViewportView(tblFeatures);
 
+        lblTitle.setBackground(new java.awt.Color(153, 153, 153));
+        lblTitle.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         lblTitle.setText("View Product Details");
 
         lblName.setText("Product Name:");
@@ -89,6 +95,8 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         txtPrice.setEditable(false);
 
+        btnUpdate.setBackground(new java.awt.Color(153, 153, 153));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnUpdate.setText("Update Product");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +104,8 @@ public class ViewProductJPanel extends javax.swing.JPanel {
             }
         });
 
+        backButton1.setBackground(new java.awt.Color(153, 153, 153));
+        backButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         backButton1.setText("<< Back");
         backButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +132,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(backButton1)
-                        .addGap(38, 38, 38)
+                        .addGap(180, 180, 180)
                         .addComponent(lblTitle))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblName)

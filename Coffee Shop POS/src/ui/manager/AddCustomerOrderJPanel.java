@@ -20,11 +20,10 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     private JPanel mainWorkArea;
     private Business business;
     /**
-     * Creates new form AddCustomerOrderJPanel
+     * Creates new form AddOrderJPanel
      */
     public AddCustomerOrderJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
-        
         this.mainWorkArea = mainWorkArea;
         this.business = business;
         
@@ -40,11 +39,8 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtQuantity = new javax.swing.JTextField();
-        lblCustomerID = new javax.swing.JLabel();
-        btnAddCustomerandOrder = new javax.swing.JButton();
-        lblLastName = new javax.swing.JLabel();
-        btnReset = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         lblOrderID = new javax.swing.JLabel();
         cmbOrderType = new javax.swing.JComboBox<>();
         lblFirstName = new javax.swing.JLabel();
@@ -61,24 +57,18 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
         lblPaid = new javax.swing.JLabel();
         chkPaid = new javax.swing.JCheckBox();
         txtCustomerID = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
         txtFirstName = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
+        lblCustomerID = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
+        btnAddCustomerandOrder = new javax.swing.JButton();
         txtOrderID = new javax.swing.JTextField();
+        lblLastName = new javax.swing.JLabel();
         lblAddCustomerandOrder = new javax.swing.JLabel();
+        btnReset = new javax.swing.JButton();
 
-        lblCustomerID.setText("Customer ID");
-
-        btnAddCustomerandOrder.setText("Add Customer + Order");
-        btnAddCustomerandOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddCustomerandOrderActionPerformed(evt);
-            }
-        });
-
-        lblLastName.setText("Last Name");
-
-        btnReset.setText("Reset");
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         lblOrderID.setText("Order ID");
 
@@ -121,195 +111,167 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantityActionPerformed(evt);
+            }
+        });
+
+        lblCustomerID.setText("Customer ID");
+
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContactActionPerformed(evt);
             }
         });
 
+        btnAddCustomerandOrder.setBackground(new java.awt.Color(153, 153, 153));
+        btnAddCustomerandOrder.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnAddCustomerandOrder.setText("Add Customer + Order");
+        btnAddCustomerandOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCustomerandOrderActionPerformed(evt);
+            }
+        });
+
+        lblLastName.setText("Last Name");
+
         lblAddCustomerandOrder.setBackground(new java.awt.Color(255, 255, 255));
-        lblAddCustomerandOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblAddCustomerandOrder.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         lblAddCustomerandOrder.setText("Add Customer and Order");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOrderID)
-                            .addComponent(lblOrderDateandTime)
-                            .addComponent(lblOrderType)
-                            .addComponent(lblPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+        btnReset.setBackground(new java.awt.Color(153, 153, 153));
+        btnReset.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnReset.setText("Reset");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrderID)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblContact)
-                        .addGap(95, 95, 95)
-                        .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCustomerID)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName))
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtLastName)
-                            .addComponent(txtCustomerID)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPaid)
-                            .addComponent(lblQuantity)
-                            .addComponent(lblProductOpted)
-                            .addComponent(lblOrderStatus))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantity)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblContact)
+                                .addGap(95, 95, 95)
+                                .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCustomerID)
+                                    .addComponent(lblFirstName)
+                                    .addComponent(lblLastName))
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtLastName)
+                                    .addComponent(txtCustomerID)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblOrderID)
+                                    .addComponent(lblOrderDateandTime)
+                                    .addComponent(lblOrderType)
+                                    .addComponent(lblPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPaid)
+                                    .addComponent(lblQuantity)
+                                    .addComponent(lblProductOpted)
+                                    .addComponent(lblOrderStatus))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(chkPaid)
+                                    .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbProductOpted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btnAddCustomerandOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnReset))
-                    .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtOrderID)
+                                        .addGap(8, 8, 8))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAddCustomerandOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnReset))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
-                        .addComponent(lblAddCustomerandOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                        .addComponent(lblAddCustomerandOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(lblAddCustomerandOrder)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCustomerID)
                     .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLastName)
                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContact)
                     .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrderID)
                     .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblOrderDateandTime)
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOrderType)
                     .addComponent(cmbOrderType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPaymentMethod)
                     .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrderStatus)
-                    .addComponent(cmbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductOpted)
-                    .addComponent(cmbProductOpted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuantity))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaid)
-                    .addComponent(chkPaid))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblProductOpted)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblQuantity)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cmbProductOpted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPaid))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(chkPaid)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddCustomerandOrder)
                     .addComponent(btnReset))
-                .addGap(21, 21, 21))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddCustomerandOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerandOrderActionPerformed
-        // TODO add your handling code here:
-         if (txtCustomerID.getText().trim().isEmpty() || 
-            txtFirstName.getText().trim().isEmpty() || 
-            txtLastName.getText().trim().isEmpty() || 
-            txtContact.getText().trim().isEmpty() ||
-            txtOrderID.getText().trim().isEmpty() ||
-            txtQuantity.getText().trim().isEmpty()) {
-            
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        try {
-            int customerId = Integer.parseInt(txtCustomerID.getText().trim());
-            int orderId = Integer.parseInt(txtOrderID.getText().trim());
-            int quantity = Integer.parseInt(txtQuantity.getText().trim());
-            
-            if (quantity <= 0) {
-                JOptionPane.showMessageDialog(this, "Quantity must be positive", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            
-            if (cmbProductOpted.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(this, "Please select a product", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            
-            Customer customer = business.getOrderDirectory().addCustomer(
-                customerId,
-                txtFirstName.getText().trim(),
-                txtLastName.getText().trim(),
-                txtContact.getText().trim()
-            );
-            
-            Product selectedProduct = (Product) cmbProductOpted.getSelectedItem();
-            
-            Order order = business.getOrderDirectory().addOrder(
-                orderId,
-                new Date(),
-                (String) cmbOrderType.getSelectedItem(),
-                (String) cmbPaymentMethod.getSelectedItem(),
-                (String) cmbOrderStatus.getSelectedItem(),
-                selectedProduct,
-                customer,
-                quantity
-            );
-            
-            JOptionPane.showMessageDialog(this, "Customer and Order added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            resetForm();
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Customer ID, Order ID and Quantity must be valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnAddCustomerandOrderActionPerformed
 
     private void chkPaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPaidActionPerformed
         // TODO add your handling code here:
@@ -323,6 +285,68 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactActionPerformed
 
+    private void btnAddCustomerandOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerandOrderActionPerformed
+        // TODO add your handling code here:
+        if (txtCustomerID.getText().trim().isEmpty() ||
+            txtFirstName.getText().trim().isEmpty() ||
+            txtLastName.getText().trim().isEmpty() ||
+            txtContact.getText().trim().isEmpty() ||
+            txtOrderID.getText().trim().isEmpty() ||
+            txtQuantity.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            int customerId = Integer.parseInt(txtCustomerID.getText().trim());
+            int orderId = Integer.parseInt(txtOrderID.getText().trim());
+            int quantity = Integer.parseInt(txtQuantity.getText().trim());
+
+            if (quantity <= 0) {
+                JOptionPane.showMessageDialog(this, "Quantity must be positive", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (cmbProductOpted.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Please select a product", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Customer customer = business.getOrderDirectory().addCustomer(
+                customerId,
+                txtFirstName.getText().trim(),
+                txtLastName.getText().trim(),
+                txtContact.getText().trim()
+            );
+
+            Product selectedProduct = (Product) cmbProductOpted.getSelectedItem();
+
+            Order order = business.getOrderDirectory().addOrder(
+                orderId,
+                new Date(),
+                (String) cmbOrderType.getSelectedItem(),
+                (String) cmbPaymentMethod.getSelectedItem(),
+                (String) cmbOrderStatus.getSelectedItem(),
+                selectedProduct,
+                customer,
+                quantity
+            );
+
+            JOptionPane.showMessageDialog(this, "Customer and Order added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            resetForm();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Customer ID, Order ID and Quantity must be valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddCustomerandOrderActionPerformed
+
+    private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCustomerandOrder;
@@ -332,6 +356,8 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbOrderType;
     private javax.swing.JComboBox<String> cmbPaymentMethod;
     private javax.swing.JComboBox<Object> cmbProductOpted;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddCustomerandOrder;
     private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblCustomerID;
@@ -354,7 +380,7 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateComboBoxes() {
-  cmbOrderType.removeAllItems();
+cmbOrderType.removeAllItems();
         cmbOrderType.addItem("Dine-in");
         cmbOrderType.addItem("Takeout");
         cmbOrderType.addItem("Pickup");
@@ -377,7 +403,7 @@ public class AddCustomerOrderJPanel extends javax.swing.JPanel {
     }
 
     private void resetForm() {
-txtCustomerID.setText("");
+ txtCustomerID.setText("");
         txtFirstName.setText("");
         txtLastName.setText("");
         txtContact.setText("");
@@ -389,5 +415,5 @@ txtCustomerID.setText("");
         if (cmbPaymentMethod.getItemCount() > 0) cmbPaymentMethod.setSelectedIndex(0);
         if (cmbOrderStatus.getItemCount() > 0) cmbOrderStatus.setSelectedIndex(0);
         if (cmbProductOpted.getItemCount() > 0) cmbProductOpted.setSelectedIndex(0);
-        }
+            }
 }

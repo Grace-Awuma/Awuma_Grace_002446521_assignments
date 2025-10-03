@@ -19,11 +19,11 @@ public class ManageProductJPanel extends javax.swing.JPanel {
     private Business business;
     private Product selectedProduct;
     /**
-     * Creates new form ManageProductJPanel
+     * Creates new form ProductPanel
      */
     public ManageProductJPanel(JPanel mainWorkArea, Business business) {
         initComponents();
-        this.mainWorkArea = mainWorkArea;
+         this.mainWorkArea = mainWorkArea;
         this.business = business;
         
         populateCategoryComboBox();
@@ -40,54 +40,32 @@ public class ManageProductJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblProductID = new javax.swing.JLabel();
-        lblProductName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         lblCategory = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
         lblPrice = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
         txtProductID = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
         txtProductName = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         txtPrice = new javax.swing.JTextField();
         lblNumber = new javax.swing.JLabel();
         lblPrepTime = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
         txtPrepTime = new javax.swing.JTextField();
+        lblProductID = new javax.swing.JLabel();
         cmbCategory = new javax.swing.JComboBox<>();
+        lblProductName = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 204, 204));
-
-        lblProductID.setText("Product ID");
-
-        lblProductName.setText("Product Name");
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         lblCategory.setText("Category");
 
-        lblPrice.setText("Price");
-
-        txtProductID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProductIDActionPerformed(evt);
-            }
-        });
-
-        lblNumber.setText("Number");
-
-        lblPrepTime.setText("Preparation Time");
-
-        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
+        btnUpdate.setBackground(new java.awt.Color(153, 153, 153));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,10 +73,18 @@ public class ManageProductJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblPrice.setText("Price");
+
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
+            }
+        });
+
+        txtProductID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProductIDActionPerformed(evt);
             }
         });
 
@@ -120,122 +106,119 @@ public class ManageProductJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        lblNumber.setText("Number");
+
+        lblPrepTime.setText("Preparation Time");
+
+        lblProductID.setText("Product ID");
+
+        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblProductName.setText("Product Name");
+
+        btnAdd.setBackground(new java.awt.Color(153, 153, 153));
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(209, 209, 209)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPrepTime)
                     .addComponent(lblNumber)
                     .addComponent(lblPrice)
                     .addComponent(lblCategory)
                     .addComponent(lblProductName)
                     .addComponent(lblProductID))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProductID, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtProductID)
                             .addComponent(txtProductName)
                             .addComponent(txtPrice)
                             .addComponent(txtNumber)
                             .addComponent(txtPrepTime)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(182, 182, 182))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(btnAdd)
-                .addGap(33, 33, 33)
-                .addComponent(btnUpdate)
-                .addGap(26, 26, 26)
-                .addComponent(btnDelete)
-                .addGap(18, 18, 18)
-                .addComponent(btnClear)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnAdd)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnUpdate)
+                        .addGap(692, 692, 692)
+                        .addComponent(btnDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClear))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductID)
                     .addComponent(txtProductID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductName)
                     .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCategory)
                     .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrice)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumber)
                     .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrepTime)
                     .addComponent(txtPrepTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnClear))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        if (txtProductID.getText().trim().isEmpty() || 
-            txtProductName.getText().trim().isEmpty() || 
-            txtPrice.getText().trim().isEmpty() ||
-            txtNumber.getText().trim().isEmpty() ||
-            txtPrepTime.getText().trim().isEmpty()) {
-            
-            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        try {
-            int productId = Integer.parseInt(txtProductID.getText().trim());
-            String productName = txtProductName.getText().trim();
-            String category = (String) cmbCategory.getSelectedItem();
-            double price = Double.parseDouble(txtPrice.getText().trim());
-            int number = Integer.parseInt(txtNumber.getText().trim());
-            int prepTime = Integer.parseInt(txtPrepTime.getText().trim());
-            
-            business.getProductCatalog().addProduct(productId, productName, category, price, number, prepTime);
-            
-            JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            clearForm();
-            refreshTable();
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter valid numbers for ID, Price, Number and Prep Time", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtProductIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductIDActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -243,17 +226,18 @@ public class ManageProductJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a product from the table", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         try {
             selectedProduct.setProductName(txtProductName.getText().trim());
             selectedProduct.setCategory((String) cmbCategory.getSelectedItem());
             selectedProduct.setPrice(Double.parseDouble(txtPrice.getText().trim()));
             selectedProduct.setNumber(Integer.parseInt(txtNumber.getText().trim()));
             selectedProduct.setPreparationTime(Integer.parseInt(txtPrepTime.getText().trim()));
-            
+
             JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+              clearForm();
             refreshTable();
-            
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Please enter valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -261,27 +245,62 @@ public class ManageProductJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         if (selectedProduct == null) {
+        if (selectedProduct == null) {
             JOptionPane.showMessageDialog(this, "Please select a product from the table", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        int confirm = JOptionPane.showConfirmDialog(this, 
-            "Are you sure you want to delete this product?", 
-            "Confirm Delete", 
+
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Are you sure you want to delete this product?",
+            "Confirm Delete",
             JOptionPane.YES_NO_OPTION);
-            
+
         if (confirm == JOptionPane.YES_OPTION) {
             business.getProductCatalog().removeProduct(selectedProduct);
             JOptionPane.showMessageDialog(this, "Product deleted successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
             clearForm();
             refreshTable();
         }
-    }
-    
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {
-        clearForm();
+        }
+
+        private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {
+            clearForm();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtProductIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductIDActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if (txtProductID.getText().trim().isEmpty() ||
+            txtProductName.getText().trim().isEmpty() ||
+            txtPrice.getText().trim().isEmpty() ||
+            txtNumber.getText().trim().isEmpty() ||
+            txtPrepTime.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            int productId = Integer.parseInt(txtProductID.getText().trim());
+            String productName = txtProductName.getText().trim();
+            String category = (String) cmbCategory.getSelectedItem();
+            double price = Double.parseDouble(txtPrice.getText().trim());
+            int number = Integer.parseInt(txtNumber.getText().trim());
+            int prepTime = Integer.parseInt(txtPrepTime.getText().trim());
+
+            business.getProductCatalog().addProduct(productId, productName, category, price, number, prepTime);
+
+            JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+            refreshTable();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers for ID, Price, Number and Prep Time", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -290,7 +309,9 @@ public class ManageProductJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbCategory;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblNumber;
@@ -310,10 +331,10 @@ public class ManageProductJPanel extends javax.swing.JPanel {
         cmbCategory.addItem("Coffee");
         cmbCategory.addItem("Tea");
         cmbCategory.addItem("Pastry");
-        cmbCategory.addItem("Sandwich");    }
+        cmbCategory.addItem("Sandwich");     }
 
     private void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
         for (Product product : business.getProductCatalog().getProductList()) {
@@ -325,10 +346,11 @@ public class ManageProductJPanel extends javax.swing.JPanel {
             row[4] = product.getNumber();
             row[5] = product.getPreparationTime() + " min";
             model.addRow(row);
-        }    }
+        }    
+    }
 
     private void addTableSelectionListener() {
-        jTable1.getSelectionModel().addListSelectionListener(e -> {
+jTable1.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && jTable1.getSelectedRow() != -1) {
                 int selectedRow = jTable1.getSelectedRow();
                 int productId = (int) jTable1.getValueAt(selectedRow, 0);
@@ -338,25 +360,25 @@ public class ManageProductJPanel extends javax.swing.JPanel {
                     displayProductDetails(selectedProduct);
                 }
             }
-        });    }
-
-    private void displayProductDetails(Product selectedProduct) {
-    txtProductID.setText(String.valueOf(selectedProduct.getProductId()));
-    txtProductName.setText(selectedProduct.getProductName());
-    cmbCategory.setSelectedItem(selectedProduct.getCategory());
-    txtPrice.setText(String.valueOf(selectedProduct.getPrice()));
-    txtNumber.setText(String.valueOf(selectedProduct.getNumber()));
-    txtPrepTime.setText(String.valueOf(selectedProduct.getPreparationTime()));
-    }
+        });      }
 
     private void clearForm() {
         txtProductID.setText("");
         txtProductName.setText("");
+          txtProductID.setEditable(true);
         txtPrice.setText("");
         txtNumber.setText("");
         txtPrepTime.setText("");
         if (cmbCategory.getItemCount() > 0) cmbCategory.setSelectedIndex(0);
         selectedProduct = null;
-    }   
-}
+        }
 
+    private void displayProductDetails(Product selectedProduct) {
+    txtProductID.setText(String.valueOf(selectedProduct.getProductId()));
+    txtProductID.setEditable(false);
+    txtProductName.setText(selectedProduct.getProductName());
+    cmbCategory.setSelectedItem(selectedProduct.getCategory());
+    txtPrice.setText(String.valueOf(selectedProduct.getPrice()));
+    txtNumber.setText(String.valueOf(selectedProduct.getNumber()));
+    txtPrepTime.setText(String.valueOf(selectedProduct.getPreparationTime()));    }
+}

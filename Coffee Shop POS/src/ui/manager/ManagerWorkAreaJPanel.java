@@ -47,8 +47,12 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        menuBar.setBackground(new java.awt.Color(153, 153, 153));
+
         lblWelcome.setText("<WelcomeMsg>");
 
+        btnAddCustomer.setBackground(new java.awt.Color(0, 153, 153));
+        btnAddCustomer.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnAddCustomer.setText("Add Customer + Order");
         btnAddCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +60,8 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnListOrders.setBackground(new java.awt.Color(0, 153, 153));
+        btnListOrders.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnListOrders.setText("List Orders");
         btnListOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +69,8 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageProduct.setBackground(new java.awt.Color(0, 153, 153));
+        btnManageProduct.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnManageProduct.setText("Manage Products");
         btnManageProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +78,8 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSearchCustomer.setBackground(new java.awt.Color(0, 153, 153));
+        btnSearchCustomer.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnSearchCustomer.setText("Search Customers");
         btnSearchCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +87,8 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewProduct.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewProduct.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnViewProduct.setText("View Product");
         btnViewProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +96,7 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHome.setBackground(new java.awt.Color(0, 255, 255));
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +121,7 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnSearchCustomer)
                 .addGap(26, 26, 26)
                 .addComponent(btnViewProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnHome)
                 .addGap(18, 18, 18))
         );
@@ -129,6 +142,7 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         splitPane.setTopComponent(menuBar);
 
+        workArea.setBackground(new java.awt.Color(0, 153, 153));
         workArea.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(workArea);
 
@@ -140,7 +154,7 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane)
+            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
